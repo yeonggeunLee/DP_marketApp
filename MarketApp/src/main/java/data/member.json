@@ -1,0 +1,14 @@
+{
+  "member": [
+    {
+      "id": "testmember",
+      "password": "test1234",
+      "type": "member"
+    },
+    {
+      "id": "testadmin",
+      "password": "test5678",
+      "type": "admin"
+    }
+  ]
+}

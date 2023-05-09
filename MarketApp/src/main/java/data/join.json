@@ -1,0 +1,21 @@
+{
+    "member": [{
+            "Type": "고객",
+            "Phone": "01011112222",
+            "ID": "testmember",
+            "Password": "test1234!",
+            "Name": "어드민"
+        }, {
+            "Type": "고객",
+            "Phone": "aaaaa",
+            "ID": "aaaaa",
+            "Password": "aaaaa",
+            "Name": "aaaaa"
+        }, {
+            "Type": "고객",
+            "Phone": "",
+            "ID": "",
+            "Password": "",
+            "Name": ""
+        }]
+}
