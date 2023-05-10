@@ -63,6 +63,7 @@ public class LoginPage extends javax.swing.JFrame {
         setTitle("cououpang");
         setResizable(false);
 
+        loginPage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginPage.setPreferredSize(new java.awt.Dimension(1440, 960));
 
         idLabel.setText("아이디 : ");
