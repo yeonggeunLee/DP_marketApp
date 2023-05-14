@@ -306,7 +306,7 @@ public class LoginPage extends javax.swing.JFrame {
      * @throws ParseException
      */
     private boolean isValid(String id, String password) throws IOException, ParseException {
-        FileReader reader = new FileReader("src\\main\\java\\data\\join.json");
+        FileReader reader = new FileReader("src\\main\\java\\JsonData\\join.json");
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
 

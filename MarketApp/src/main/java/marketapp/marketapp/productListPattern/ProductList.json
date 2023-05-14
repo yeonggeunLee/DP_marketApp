@@ -1,0 +1,25 @@
+{
+  "상품목록": [
+    {
+      "상품명": "황금사과",
+      "상품정보": "가짜 사과",
+      "카테고리": "식품",
+      "이미지": "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Galaxy s23.jpg",
+      "가격": "40000"
+    },
+    {
+      "상품명": "갤럭시 S23",
+      "상품정보": "2023년 출시된 새로운 갤럭시",
+      "카테고리": "전자제품",
+      "이미지": "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Galaxy s23.jpg",
+      "가격": "1000000"
+    },
+    {
+      "상품명": "황금사과",
+      "상품정보": "가짜 사과",
+      "카테고리": "식품",
+      "이미지": "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Galaxy s23.jpg",
+      "가격": "40000"
+    }
+  ]
+}

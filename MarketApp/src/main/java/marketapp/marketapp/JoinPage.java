@@ -49,8 +49,8 @@ public class JoinPage extends javax.swing.JFrame {
 
     private JSONObject finalObject;
     private JSONArray jsonArr;
-    private static final String FILENAME = "src\\main\\java\\data\\join.json";
-    File fileP = new File("src\\main\\java\\data\\join.json");
+    private static final String FILENAME = "src\\main\\java\\JsonData\\join.json";
+    File fileP = new File("src\\main\\java\\JsonData\\join.json");
 
     public JoinPage() {
         this.jsonArr = new JSONArray();
