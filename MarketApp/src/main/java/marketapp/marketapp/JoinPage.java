@@ -43,6 +43,13 @@ public class JoinPage extends javax.swing.JFrame {
     // 영어, 숫자, 특수문자 포함한 MIN to MAX 글자 정규식
     private final String checkPattern
             = "^((?=.*\\d)(?=.*[a-zA-Z])(?=.*[\\W]).{" + MIN + "," + MAX + "})$";
+    private final String idCheckPattern
+            = "[!@#$%^&*(),.?\":{}|<>]";
+    // 휴대폰 정규식
+    private final String phoneCheckPattern
+            = "^01([0|1|6|7|8|9])[0-9]{7,8}$";
+    private final String nameCheckPattern
+            = "^[가-힣]{1,4}$";
     // 공백 문자 정규식
     private final String BLANKPT = "(\\s)";
     Matcher matcher;
@@ -88,10 +95,13 @@ public class JoinPage extends javax.swing.JFrame {
         pw2TF = new javax.swing.JPasswordField();
         pw2checkLabel = new javax.swing.JLabel();
         idcheckLabel = new javax.swing.JLabel();
+        phonecheckLabel = new javax.swing.JLabel();
+        namecheckLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("회원가입");
         setName("JoinPage"); // NOI18N
+        setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
         rGroup.add(customerB);
@@ -118,13 +128,20 @@ public class JoinPage extends javax.swing.JFrame {
             }
         });
 
+        phoneTF.setText("010-0000-0000");
+        phoneTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneTFActionPerformed(evt);
+            }
+        });
+
         idLabel.setText("아이디");
 
         pwLabel.setText("비밀번호");
 
         nameLabel.setText("이름");
 
-        phoneLabel.setText("전화번호");
+        phoneLabel.setText("휴대폰번호");
 
         joinButton.setText("가입하기");
         joinButton.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +213,7 @@ public class JoinPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pwcheckLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phonecheckLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(idLabel)
@@ -215,7 +233,8 @@ public class JoinPage extends javax.swing.JFrame {
                                     .addComponent(phoneTF)
                                     .addComponent(pwTF)
                                     .addComponent(pw2TF)
-                                    .addComponent(idcheckLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(idcheckLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(namecheckLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -256,11 +275,15 @@ public class JoinPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(namecheckLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneLabel))
-                .addGap(63, 63, 63)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(phonecheckLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(joinButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -280,14 +303,36 @@ public class JoinPage extends javax.swing.JFrame {
 
     private void joinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinButtonActionPerformed
         // TODO add your handling code here:
+        String nameSave = nameTF.getText();
+        String pwSave = pwTF.getText();
+        String idSave = idTF.getText();
+        String phoneSave = phoneTF.getText();
+
+        Boolean joinCheck1 = false;
+        Boolean joinCheck2 = false;
+        Boolean joinCheck3 = false;
+        Boolean joinCheck4 = false;
+
+        matcher = Pattern.compile(phoneCheckPattern).matcher(phoneSave);
+        if (matcher.matches()) {
+            phonecheckLabel.setText("전화번호 양식에 맞게 작성해주세요.");
+            joinCheck1 = false;
+        } else {
+            phonecheckLabel.setText("입력한 전화번호: " + phoneSave);
+            joinCheck1 = true;
+        }
+
+        matcher = Pattern.compile(nameCheckPattern).matcher(nameSave);
+        if (!matcher.matches()) {
+            namecheckLabel.setText("이름은 최대 4글자까지만 허용합니다.");
+            joinCheck2 = false;
+        } else {
+            namecheckLabel.setText("입력한 이름: " + nameSave);
+            joinCheck2 = true;
+        }
+
         try {
-            if (idConfirm == true && pw1Confirm == true && pw2Confirm == true && (!"".equals(nameTF.getText())) && (!"".equals(phoneTF.getText()))) {
-
-                String nameSave = nameTF.getText();
-                String pwSave = pwTF.getText();
-                String idSave = idTF.getText();
-                String phoneSave = phoneTF.getText();
-
+            if (idConfirm == true && pw1Confirm == true && pw2Confirm == true && (joinCheck2 == true) && (joinCheck1 == true)) {
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(fileP));
                     if (br.readLine() == null) {
@@ -343,12 +388,11 @@ public class JoinPage extends javax.swing.JFrame {
                 membershipProgress = true;
                 JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
                 this.setVisible(false);
-            } else if (idConfirm == false || pw1Confirm == false || pw2Confirm == false || ("".equals(nameTF.getText())) || ("".equals(phoneTF.getText()))) {
+            }/* else if (idConfirm == false || pw1Confirm == false || pw2Confirm == false || (joinCheck2 == false) && (joinCheck1 == false)) {
+                JOptionPane.showMessageDialog(null, "입력정보를 다시 확인해주세요.");
+            }*/ else {
                 JOptionPane.showMessageDialog(null, "입력정보를 다시 확인해주세요.");
             }
-            /*else {
-                JOptionPane.showMessageDialog(null, "입력정보를 다시 확인해주세요.");
-            }*/
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "회원가입에 실패하였습니다.");
             this.setVisible(false);
@@ -371,48 +415,77 @@ public class JoinPage extends javax.swing.JFrame {
         Boolean idTest2 = false;
         Boolean idTest3 = false;
         Boolean idTest4 = false;
-        try {
-            // ASCII 문자 비교를 위한 UpperCase
-            String tmpId = idTF.getText().toUpperCase();
-            // 문자열 길이
-            int strLen = tmpId.length();
+        Boolean idTest5 = false;
 
-            // 공백 체크
+        String iID = idTF.getText();
+        // ASCII 문자 비교를 위한 UpperCase
+        String tmpId = iID.toUpperCase();
+        // 문자열 길이
+        int strLen = tmpId.length();
+
+        try {
+            // 아이디 미입력 체크
             if (idTF == null || "".equals(idTF)) {
-                JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.", "아이디 공백", JOptionPane.PLAIN_MESSAGE);
+                idcheckLabel.setText("아이디를 입력해주세요.");
+                idTest1 = false;
                 this.idConfirm = false;
             } else {
                 idTest1 = true;
             }
-
             // 아이디 입력 길이 체크
             if (idTF.getText().length() < 6 || idTF.getText().length() > 15) {
-                JOptionPane.showMessageDialog(null, "아이디를 다시 입력해주세요.", "아이디 길이", JOptionPane.PLAIN_MESSAGE);
+                idcheckLabel.setText("아이디는 6자리 이상, 15자리 이하만 가능 합니다.");
+                idTest2 = false;
                 this.idConfirm = false;
             } else {
                 idTest2 = true;
             }
 
+            // 공백 정규식 체크
             matcher = Pattern.compile(BLANKPT).matcher(tmpId);
             if (matcher.find()) {
-                JOptionPane.showMessageDialog(null, "아이디에 공백이 있습니다.", "아이디 공백", JOptionPane.PLAIN_MESSAGE);
+                idcheckLabel.setText("입력한 아이디 안에 공백이 있습니다.");
                 this.idConfirm = false;
+                idTest3 = false;
             } else {
                 idTest3 = true;
             }
 
             // 아이디 정규식 체크
-            matcher = Pattern.compile(checkPattern).matcher(tmpId);
+            matcher = Pattern.compile(idCheckPattern).matcher(tmpId);
             if (matcher.find()) {
-                JOptionPane.showMessageDialog(null, "아이디에 특수문자가 있습니다.", "아이디 정규식", JOptionPane.PLAIN_MESSAGE);
+                idcheckLabel.setText("입력한 아이디 안에 특수문자가 존재합니다.");
+                idTest4 = false;
+                System.out.println(idTest4);
                 this.idConfirm = false;
             } else {
                 idTest4 = true;
             }
 
             if (idTest1 == true && idTest2 == true && idTest3 == true && idTest4 == true) {
-                JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.");
-                this.idConfirm = true;
+                JSONParser parser = new JSONParser();
+                FileReader reader = new FileReader(FILENAME);
+                Object obj = parser.parse(reader);
+                JSONObject jsonObj = (JSONObject) obj;
+                reader.close();
+                JSONArray memArray = (JSONArray) jsonObj.get("member");
+                for (int i = 0; i < memArray.size(); i++) {
+                    JSONObject sameID = (JSONObject) memArray.get(i);
+                    if (sameID.get("ID").equals(idTF.getText())) {
+                        idcheckLabel.setText("중복된 아이디입니다.");
+                        //System.out.println(idTest5);
+                        break;
+                    } else {
+                        idTest5 = true;
+                        JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.");
+                        //System.out.println(idTest5);
+                        break;
+                    }
+                }
+                if (idTest5 == true) {
+                    idcheckLabel.setText("사용 가능한 아이디입니다.");
+                    this.idConfirm = true;
+                }
             }
 
         } catch (Exception ex) {
@@ -424,17 +497,19 @@ public class JoinPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String iPW = pwTF.getText();
+        // ASCII 문자 비교를 위한 UpperCase
+        String tmpPw = iPW.toUpperCase();
+        // 문자열 길이
+        int strLen = tmpPw.length();
+
         boolean test1 = true, test2 = true, test3 = true, test4 = true;
 
+        // 비밀번호 공백 체크
         if (pwTF == null || "".equals(pwTF)) {
             JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
             test1 = false;
             this.pw1Confirm = false;
         }
-        // ASCII 문자 비교를 위한 UpperCase
-        String tmpPw = iPW.toUpperCase();
-        // 문자열 길이
-        int strLen = tmpPw.length();
 
         // 글자 길이 체크
         if (strLen > 15 || strLen < 6) {
@@ -495,6 +570,10 @@ public class JoinPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pw2TFActionPerformed
 
+    private void phoneTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneTFActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton adminB;
@@ -507,8 +586,10 @@ public class JoinPage extends javax.swing.JFrame {
     private javax.swing.JButton joinButton;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTF;
+    private javax.swing.JLabel namecheckLabel;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField phoneTF;
+    private javax.swing.JLabel phonecheckLabel;
     private javax.swing.JLabel pw2Label;
     private javax.swing.JPasswordField pw2TF;
     private javax.swing.JLabel pw2checkLabel;
