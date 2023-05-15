@@ -2,6 +2,7 @@ package marketapp.marketapp.productListPattern.books;
 
 import marketapp.marketapp.productListPattern.Product;
 import marketapp.marketapp.productListPattern.ProductList;
+import marketapp.marketapp.productListPattern.elec.ElectronicList;
 
 import javax.swing.*;
 
@@ -15,22 +16,26 @@ public class Books extends ProductList {
      * @return 도서 카테고리 객체 생성
      */
     public Product addProductList(String name, String price, String desc, ImageIcon image, String type) {
-        if(type.equals("도서")){
-            return new BookList(name, price, desc, image, type);
+        if (type.equals("도서")) {
+            return new BookList(name, price, desc, image, type, "add");
         } else {
             return null;
         }
     }
 
     public Product readProductList(String name) {
-        return null;
+        return new BookList(name, "read");
     }
 
     public Product editProductList(String name, String price, String desc, ImageIcon image, String type) {
-        return null;
+        if (type.equals("도서")) {
+            return new BookList(name, price, desc, image, type, "edit");
+        } else {
+            return null;
+        }
     }
 
     public Product deleteProductList(String name) {
-        return null;
+        return new BookList(name, "delete");
     }
 }
