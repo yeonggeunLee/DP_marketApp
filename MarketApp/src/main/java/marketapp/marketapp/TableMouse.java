@@ -18,7 +18,11 @@ public class TableMouse implements MouseListener {
     public static String name;
     public static String desc;
     public static String price;
+<<<<<<< HEAD
     public static ImageIcon img;
+=======
+    public static  ImageIcon img;
+>>>>>>> e0e24efe2105e38101ecc95523afccf45a0a57df
 
     public static ImageIcon getImg() {
         return img;
