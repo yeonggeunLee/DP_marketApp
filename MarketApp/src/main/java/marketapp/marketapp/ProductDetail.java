@@ -4,15 +4,12 @@
  */
 package marketapp.marketapp;
 
-import java.awt.Button;
-import java.awt.Font;
+import java.awt.*;
+
 import static java.awt.SystemColor.menu;
-import java.awt.TextField;
 import static javax.management.Query.plus;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+
+import javax.swing.*;
 
 /**
  *
@@ -40,6 +37,18 @@ public class ProductDetail extends JFrame {
         img.setSize(200, 30);
         img.setLocation(50, 10);
         img.setFont(new Font("맑은고딕", Font.BOLD, 20));
+
+        JPanel imgPane = new JPanel(){
+            ImageIcon aa = Tableicon.getTableImage();
+            ImageIcon testimg = new ImageIcon(aa.getImage());
+            public void paint(Graphics g){
+                g.drawImage(testimg.getImage(),0,0,null);
+            }
+
+        };
+        imgPane.setSize(310,200);
+        imgPane.setLocation(10,20);
+        jf.add(imgPane);
         jf.add(img);
 
         //상품명
