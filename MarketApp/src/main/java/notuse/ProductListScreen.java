@@ -1,36 +1,42 @@
-package marketapp.marketapp;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package notuse;
 
+import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import marketapp.marketapp.TableMouse;
+import static marketapp.marketapp.Tableicon.table;
+import static marketapp.marketapp.Tableicon.tableImage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.swing.*;
-import javax.swing.table.*;
+/**
+ *
+ * @author 이영근
+ */
+public class ProductListScreen {
 
-public class Tableicon extends JPanel {
+    JFrame productList = new JFrame("Table Icon");
+
 
     String filePath = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Data\\ProductList.json";
-    Object[][] contents;
     public static JTable table;
+    Object[][] contents;
 
     public static ImageIcon tableImage;
     public static String pName;
     public static String pPrice;
     public static String pDesc;
 
-    public static ImageIcon getTableImage() {
-        return tableImage;
-    }
-
-    public Tableicon() {
-        // 테이블에 JSON 파일에 저장된 데이터  넣기
+    public ProductListScreen() {
         try {
             JSONParser parser = new JSONParser();
             Object obj = parser.parse(new FileReader(filePath));
@@ -43,7 +49,7 @@ public class Tableicon extends JPanel {
                 JSONObject jObj = (JSONObject) productInfoArr.get(i);
                 this.tableImage = new ImageIcon((String) jObj.get("이미지"));
                 Image needChangeImage = tableImage.getImage();
-                Image changedImage = needChangeImage.getScaledInstance(300,200, Image.SCALE_SMOOTH);
+                Image changedImage = needChangeImage.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
                 ImageIcon changedImageIcon = new ImageIcon(changedImage);
                 contents[i][0] = changedImageIcon;
                 contents[i][1] = jObj.get("상품명");
@@ -76,9 +82,15 @@ public class Tableicon extends JPanel {
             //table.setPreferredScrollableViewportSize(table.getPreferredSize());
 
             JScrollPane scrollPane = new JScrollPane(table);
-            scrollPane.setPreferredSize(new Dimension(1440, 960));
+            //scrollPane.setBounds(300,0,1360,1024);
+            scrollPane.setPreferredSize(new Dimension(1440,1024));
+            scrollPane.setSize(new Dimension(1440,1024));
+            productList.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            productList.setSize(1920, 1024);
+            productList.add(scrollPane);
 
-            add(scrollPane);
+            productList.setResizable(false);
+            productList.setVisible(true);
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -89,5 +101,4 @@ public class Tableicon extends JPanel {
         }
 
     }
-
 }

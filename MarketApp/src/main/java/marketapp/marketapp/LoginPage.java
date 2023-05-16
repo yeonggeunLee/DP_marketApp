@@ -256,14 +256,7 @@ public class LoginPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
                 }
                 dispose();
-
-                JFrame productList = new JFrame("Table Icon");
-                productList.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                productList.setSize(1440, 960);
-                productList.add(new Tableicon());
-                //frame.setLocationByPlatform(true);
-                //frame.pack();
-                productList.setVisible(true);
+                ProductListScreen pList = new ProductListScreen();
             } else {
                 JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다.");
             }

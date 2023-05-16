@@ -1,13 +1,14 @@
-<<<<<<< HEAD
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\books\Books.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\notuse\JoinScreen.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\notuse\LoginScreen.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\notuse\Products.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\ProductDetail.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\foods\Foods.java
+F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\ProductList.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\TableMouse.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\elec\ElectronicList.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\Tableicon.java
+F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\PList.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\CRUD.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\foods\FoodList.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\notuse\Tableicon.java
@@ -21,16 +22,3 @@ F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productLi
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\DTO\UserDTO.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\MarketApp.java
 F:\SchoolJava\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\productListPattern\books\BookList.java
-=======
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\DTO\UserDTO.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\MarketApp.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\ProductDetail.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\Tableicon.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\notuse\Tableicon.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\notuse\Products.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\TableMouse.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\JoinPage.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\marketapp\marketapp\LoginPage.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\notuse\JoinScreen.java
-E:\DP_marketApp\DP_marketApp\MarketApp\src\main\java\notuse\LoginScreen.java
->>>>>>> 7d3ed62cb8895994ce89eb889119a1d50f055190

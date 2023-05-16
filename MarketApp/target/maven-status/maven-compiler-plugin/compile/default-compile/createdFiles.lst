@@ -1,64 +1,21 @@
-marketapp\marketapp\LoginPage$2.class
 notuse\Tableicon$1.class
 marketapp\marketapp\MarketApp.class
-marketapp\marketapp\JoinPage$4.class
-marketapp\marketapp\JoinPage$9.class
-DTO\UserDTO.class
+marketapp\marketapp\productListPattern\books\BookList.class
 marketapp\marketapp\Tableicon.class
-<<<<<<< HEAD
-marketapp\marketapp\ProductDetailScreen.class
-marketapp\marketapp\productListPattern\elec\ElectronicList.class
-=======
->>>>>>> 7d3ed62cb8895994ce89eb889119a1d50f055190
-notuse\JoinScreen.class
+marketapp\marketapp\ProductList.class
+marketapp\marketapp\productListPattern\Product.class
 notuse\LoginScreen$2.class
-marketapp\marketapp\JoinPage$2.class
-marketapp\marketapp\ProductDetail.class
-marketapp\marketapp\JoinPage$6.class
+marketapp\marketapp\productListPattern\CRUD.class
 marketapp\marketapp\Tableicon$1.class
-marketapp\marketapp\JoinPage.class
-<<<<<<< HEAD
 marketapp\marketapp\productListPattern\ProductList.class
 marketapp\marketapp\productListPattern\TestDrvier.class
+marketapp\marketapp\ProductList$2.class
+notuse\LoginScreen.class
+marketapp\marketapp\productListPattern\PList.class
 marketapp\marketapp\Tableicon$2.class
 marketapp\marketapp\productListPattern\foods\Foods.class
-marketapp\marketapp\ProductDetailScreen$1.class
-marketapp\marketapp\ProductDetailScreen$3.class
-=======
-marketapp\marketapp\Tableicon$2.class
->>>>>>> 7d3ed62cb8895994ce89eb889119a1d50f055190
+notuse\Tableicon.class
+marketapp\marketapp\ProductList$1.class
+notuse\Products.class
 notuse\LoginScreen$1.class
-marketapp\marketapp\JoinPage$3.class
-marketapp\marketapp\LoginPage$1.class
-.netbeans_automatic_build
-marketapp\marketapp\JoinPage$10.class
-marketapp\marketapp\JoinPage$8.class
-notuse\JoinScreen$1.class
-<<<<<<< HEAD
-marketapp\marketapp\productListPattern\books\Books.class
-marketapp\marketapp\productListPattern\books\BookList.class
-marketapp\marketapp\productListPattern\Product.class
-marketapp\marketapp\productListPattern\CRUD.class
-=======
->>>>>>> 7d3ed62cb8895994ce89eb889119a1d50f055190
-notuse\JoinScreen$1$1.class
-marketapp\marketapp\LoginPage$3.class
-marketapp\marketapp\JoinPage$5.class
-marketapp\marketapp\LoginPage.class
-marketapp\marketapp\JoinPage$1.class
-marketapp\marketapp\JoinPage$7.class
-<<<<<<< HEAD
-marketapp\marketapp\productListPattern\elec\Electronics.class
-notuse\LoginScreen.class
-marketapp\marketapp\ProductDetail$1.class
-notuse\Tableicon.class
-notuse\Products.class
-marketapp\marketapp\TableMouse.class
-marketapp\marketapp\ProductDetailScreen$2.class
 marketapp\marketapp\productListPattern\foods\FoodList.class
-=======
-notuse\LoginScreen.class
-notuse\Tableicon.class
-notuse\Products.class
-marketapp\marketapp\TableMouse.class
->>>>>>> 7d3ed62cb8895994ce89eb889119a1d50f055190
