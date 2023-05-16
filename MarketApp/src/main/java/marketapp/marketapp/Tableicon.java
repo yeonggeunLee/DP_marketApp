@@ -16,7 +16,7 @@ import javax.swing.table.*;
 
 public class Tableicon extends JPanel {
 
-    String filePath = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\ProductList.json";
+    String filePath = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Data\\ProductList.json";
     Object[][] contents;
     public static JTable table;
 
@@ -42,7 +42,10 @@ public class Tableicon extends JPanel {
             for (int i = 0; i < productInfoArr.size(); i++) {
                 JSONObject jObj = (JSONObject) productInfoArr.get(i);
                 this.tableImage = new ImageIcon((String) jObj.get("이미지"));
-                contents[i][0] = tableImage;
+                Image needChangeImage = tableImage.getImage();
+                Image changedImage = needChangeImage.getScaledInstance(300,200, Image.SCALE_SMOOTH);
+                ImageIcon changedImageIcon = new ImageIcon(changedImage);
+                contents[i][0] = changedImageIcon;
                 contents[i][1] = jObj.get("상품명");
                 contents[i][2] = jObj.get("상품정보");
                 contents[i][3] = jObj.get("가격");
@@ -68,7 +71,7 @@ public class Tableicon extends JPanel {
             };
 
             table.addMouseListener(new TableMouse());
-            table.setRowHeight(100);
+            table.setRowHeight(150);
             //table.setSize(1440, 960);
             //table.setPreferredScrollableViewportSize(table.getPreferredSize());
 

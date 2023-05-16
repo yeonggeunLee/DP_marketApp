@@ -26,7 +26,7 @@ public class ProductDetailScreen extends javax.swing.JFrame {
     public ProductDetailScreen() {
 
         imgPane = new JPanel() {
-            ImageIcon aa = Tableicon.getTableImage();
+            ImageIcon aa = TableMouse.getImg();
             ImageIcon testimg = new ImageIcon(aa.getImage());
 
             public void paint(Graphics g) {

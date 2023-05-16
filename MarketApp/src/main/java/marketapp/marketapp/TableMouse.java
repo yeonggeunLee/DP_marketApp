@@ -18,6 +18,11 @@ public class TableMouse implements MouseListener {
     public static String name;
     public static String desc;
     public static String price;
+    public static  ImageIcon img;
+
+    public static ImageIcon getImg() {
+        return img;
+    }
 
     public static String getName() {
         return name;
@@ -42,7 +47,7 @@ public class TableMouse implements MouseListener {
             for (int col = 0; col < Tableicon.table.getColumnCount(); col++) {
                 o[col] = Tableicon.table.getValueAt(r, col);
             }
-            ImageIcon img = (ImageIcon) o[0];
+            this.img = (ImageIcon) o[0];
             this.name = (String) o[1];
             this.desc = (String) o[2];
             this.price = (String) o[3];
