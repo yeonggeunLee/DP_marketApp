@@ -1,4 +1,4 @@
-package marketapp.marketapp;
+package marketapp.marketapp.ProductList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

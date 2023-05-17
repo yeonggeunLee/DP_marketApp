@@ -1,67 +1,63 @@
 {
-  "member": [
-    {
-      "Type": "고객",
-      "Phone": "01011112222",
-      "ID": "testmember",
-      "Password": "test1234!",
-      "Name": "어드민"
-    },
-    {
-      "Type": "고객",
-      "Phone": "aaaaa",
-      "ID": "aaaaa",
-      "Password": "aaaaa",
-      "Name": "aaaaa"
-    },
-    {
-      "Type": "고객",
-      "Phone": "",
-      "ID": "",
-      "Password": "",
-      "Name": ""
-    },
-    {
-      "Type": "고객",
-      "Phone": "01033333333",
-      "ID": "ttttttt",
-      "Password": "qwe123!",
-      "Name": "신짱구"
-    },
-    {
-      "Type": "고객",
-      "Phone": "01033334444",
-      "ID": "testmem",
-      "Password": "test1234!",
-      "Name": "신짱"
-    },
-    {
-      "Type": "고객",
-      "Phone": "1123214",
-      "ID": "testmember",
-      "Password": "test1234!",
-      "Name": "신짱구2"
-    },
-    {
-      "Type": "고객",
-      "Phone": "010-0000-0000",
-      "ID": "testmeme",
-      "Password": "test1234!",
-      "Name": "신짱아"
-    },
-    {
-      "Type": "고객",
-      "Phone": "010-0000-0000",
-      "ID": "testmemem",
-      "Password": "qwe123!",
-      "Name": "신짱아아"
-    },
-    {
-      "Type": "고객",
-      "Phone": "010-0000-0000",
-      "ID": "testmemberss",
-      "Password": "aaa111!",
-      "Name": "신짱"
-    }
-  ]
+    "member": [{
+            "Type": "고객",
+            "Phone": "01011112222",
+            "ID": "testmember",
+            "Password": "test1234!",
+            "Name": "어드민"
+        }, {
+            "Type": "고객",
+            "Phone": "aaaaa",
+            "ID": "aaaaa",
+            "Password": "aaaaa",
+            "Name": "aaaaa"
+        }, {
+            "Type": "관리자",
+            "Phone": "",
+            "ID": "",
+            "Password": "",
+            "Name": ""
+        }, {
+            "Type": "고객",
+            "Phone": "01033333333",
+            "ID": "ttttttt",
+            "Password": "qwe123!",
+            "Name": "신짱구"
+        }, {
+            "Type": "고객",
+            "Phone": "01033334444",
+            "ID": "testmem",
+            "Password": "test1234!",
+            "Name": "신짱"
+        }, {
+            "Type": "고객",
+            "Phone": "1123214",
+            "ID": "testmember",
+            "Password": "test1234!",
+            "Name": "신짱구2"
+        }, {
+            "Type": "고객",
+            "Phone": "010-0000-0000",
+            "ID": "testmeme",
+            "Password": "test1234!",
+            "Name": "신짱아"
+        }, {
+            "Type": "고객",
+            "Phone": "010-0000-0000",
+            "ID": "testmemem",
+            "Password": "qwe123!",
+            "Name": "신짱아아"
+        }, {
+            "Type": "고객",
+            "Phone": "010-0000-0000",
+            "ID": "testmemberss",
+            "Password": "aaa111!",
+            "Name": "신짱"
+        }, {
+            "Type": "관리자",
+            "Phone": "010-0000-0000",
+            "ID": "testadmin",
+            "Password": "test123!",
+            "Name": "짱구구"
+        }]
 }

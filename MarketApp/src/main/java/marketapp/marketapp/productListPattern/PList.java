@@ -4,7 +4,7 @@
  */
 package marketapp.marketapp.productListPattern;
 
-import marketapp.marketapp.Tableicon;
+import marketapp.marketapp.ProductList.Tableicon;
 
 /**
  *

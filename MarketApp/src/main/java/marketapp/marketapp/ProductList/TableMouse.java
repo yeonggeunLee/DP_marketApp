@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package marketapp.marketapp;
+package marketapp.marketapp.ProductList;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,11 +18,7 @@ public class TableMouse implements MouseListener {
     public static String name;
     public static String desc;
     public static String price;
-<<<<<<< HEAD
     public static ImageIcon img;
-=======
-    public static  ImageIcon img;
->>>>>>> e0e24efe2105e38101ecc95523afccf45a0a57df
 
     public static ImageIcon getImg() {
         return img;

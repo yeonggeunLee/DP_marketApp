@@ -20,7 +20,6 @@
       "카테고리": "식품",
       "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
       "가격": "50000"
-<<<<<<< HEAD
     },
     {
       "상품명": "갤럭시 s23",
@@ -126,8 +125,6 @@
       "카테고리": "식품",
       "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
       "가격": "50000"
-=======
->>>>>>> e0e24efe2105e38101ecc95523afccf45a0a57df
     }
   ]
 }
