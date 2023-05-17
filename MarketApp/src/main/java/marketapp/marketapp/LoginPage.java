@@ -5,15 +5,13 @@
 package marketapp.marketapp;
 
 import marketapp.marketapp.ProductList.ProductListScreen;
-import notuse.Products;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import marketapp.marketapp.ProductList.AdminPage;
+import marketapp.marketapp.ProductList.AdminPageScreen;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -254,7 +252,7 @@ public class LoginPage extends javax.swing.JFrame {
             if (isValid(inputId.trim(), inputPw)) {
                 if (isAdmin == true) {
                     JOptionPane.showMessageDialog(null, "관리자 로그인에 성공했습니다.");
-                    AdminPage adminPage = new AdminPage();
+                    AdminPageScreen adminPage = new AdminPageScreen();
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");

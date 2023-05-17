@@ -11,8 +11,6 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import marketapp.marketapp.ProductList.TableMouse;
-import static marketapp.marketapp.ProductList.Tableicon.table;
-import static marketapp.marketapp.ProductList.Tableicon.tableImage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

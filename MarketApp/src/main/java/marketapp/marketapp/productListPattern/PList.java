@@ -4,7 +4,7 @@
  */
 package marketapp.marketapp.productListPattern;
 
-import marketapp.marketapp.ProductList.Tableicon;
+import notuse.LoginScreen;
 
 /**
  *
@@ -16,7 +16,7 @@ public class PList extends javax.swing.JFrame {
      * Creates new form PList
      */
     public PList() {
-        this.add(new Tableicon());
+        this.add(new LoginScreen.Tableicon());
         initComponents();
     }
 

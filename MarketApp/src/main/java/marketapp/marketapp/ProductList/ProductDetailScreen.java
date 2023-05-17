@@ -143,7 +143,6 @@ public class ProductDetailScreen extends javax.swing.JFrame {
         priceLabel.setText("상품가격");
 
         jTextField1.setFont(new java.awt.Font("맑은 고딕", 0, 16)); // NOI18N
-        jTextField1.setText("수량");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

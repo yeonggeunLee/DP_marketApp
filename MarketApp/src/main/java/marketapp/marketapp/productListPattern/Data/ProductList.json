@@ -1,130 +1,171 @@
 {
-  "상품목록": [
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    },
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    },
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    },
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    },
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    },
-    {
-      "상품명": "갤럭시 s23",
-      "상품정보": "2023년 새로 출시한 갤럭시",
-      "카테고리": "전자제품",
-      "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
-      "가격": "1000000"
-    },
-    {
-      "상품명": "짱구 마스크",
-      "상품정보": "짱구 마스크",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\mask.png",
-      "가격": "50000"
-    },
-    {
-      "상품명": "홈런볼",
-      "상품정보": "홈런볼 1봉지",
-      "카테고리": "식품",
-      "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
-      "가격": "50000"
-    }
-  ]
+    "상품목록": [{
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23",
+            "상품정보": "2023년 새로 출시한 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "1000000"
+        }, {
+            "상품명": "짱구 마스크",
+            "상품정보": "짱구 마스크",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\mask.png",
+            "가격": "50000"
+        }, {
+            "상품명": "홈런볼",
+            "상품정보": "홈런볼 1봉지",
+            "카테고리": "식품",
+            "이미지": "src\\main\\java\\image\\productimage\\homerunball.jpg",
+            "가격": "50000"
+        }, {
+            "상품명": "갤럭시 s23 plus",
+            "상품정보": "2023년 새로나온 갤럭시",
+            "카테고리": "전자제품",
+            "이미지": "E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\Galaxy s23.jpg",
+            "가격": "990000"
+        }, {
+            "상품명": "아이폰",
+            "상품정보": "새로나온 아이폰",
+            "카테고리": "전자제품",
+            "이미지": "E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg",
+            "가격": "1500000"
+        }, {
+            "상품명": "아이폰 16",
+            "상품정보": "아이폰 16 새로나온ㄱ",
+            "카테고리": "전자제품",
+            "이미지": "E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg",
+            "가격": "4999999"
+        }, {
+            "상품명": "아이폰 99",
+            "상품정보": "미래의 아이폰99",
+            "카테고리": "전자제품",
+            "이미지": "E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg",
+            "가격": "1240500000"
+        }, {
+            "상품명": "아이폰95",
+            "상품정보": "아이폰 95",
+            "카테고리": "전자제품",
+            "이미지": "E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg",
+            "가격": "100000000"
+        }, {
+            "상품명": "아이폰100",
+            "상품정보": "아이폰100 신형",
+            "카테고리": "전자제품",
+            "이미지": "\"E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg\"",
+            "가격": "3000000"
+        }, {
+            "상품명": "아이폰3000",
+            "상품정보": "아이폰3000. 3000년에 출시",
+            "카테고리": "전자제품",
+            "이미지": "\"E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage\\iphone.jpg\"",
+            "가격": "333333333"
+        }, {
+            "상품명": "유한락스",
+            "상품정보": "유한락스",
+            "카테고리": "전자제품",
+            "이미지": "C:\\Users\\이영근\\Documents\\카카오톡 받은 파일\\JTableTest\\JTableTest\\src\\main\\java\\m_image\\lax.jpg",
+            "가격": "4000"
+        }, {
+            "상품명": "신짱구 피규어",
+            "상품정보": "신짱구 피규어",
+            "카테고리": "전자제품",
+            "이미지": "C:\\Users\\이영근\\Documents\\카카오톡 받은 파일\\JTableTest\\JTableTest\\src\\main\\java\\m_image\\mask.png",
+            "가격": "55000"
+        }, {
+            "상품명": "홈런볼 한정판",
+            "상품정보": "홈런볼 한정판",
+            "카테고리": "식품",
+            "이미지": "C:\\Users\\이영근\\Documents\\카카오톡 받은 파일\\JTableTest\\JTableTest\\src\\main\\java\\m_image\\homerunball.jpg",
+            "가격": "1000002"
+        }]
 }

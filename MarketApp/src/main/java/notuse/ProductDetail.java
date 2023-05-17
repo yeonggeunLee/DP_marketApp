@@ -2,12 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package marketapp.marketapp.ProductList;
+package notuse;
 
 import java.awt.*;
-
-import static java.awt.SystemColor.menu;
-import static javax.management.Query.plus;
 
 import javax.swing.*;
 
@@ -39,7 +36,7 @@ public class ProductDetail extends JFrame {
         img.setFont(new Font("맑은고딕", Font.BOLD, 20));
 
         JPanel imgPane = new JPanel(){
-            ImageIcon aa = Tableicon.getTableImage();
+            ImageIcon aa = LoginScreen.Tableicon.getTableImage();
             ImageIcon testimg = new ImageIcon(aa.getImage());
             public void paint(Graphics g){
                 g.drawImage(testimg.getImage(),0,0,null);

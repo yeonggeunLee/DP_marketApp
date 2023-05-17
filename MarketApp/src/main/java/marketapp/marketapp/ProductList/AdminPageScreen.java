@@ -4,21 +4,19 @@
  */
 package marketapp.marketapp.ProductList;
 
-import java.awt.Dimension;
 import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import static marketapp.marketapp.ProductList.ProductListScreen.tableImage;
+
+import marketapp.marketapp.productListPattern.Product;
+import marketapp.marketapp.productListPattern.ProductList;
+import marketapp.marketapp.productListPattern.books.Books;
+import marketapp.marketapp.productListPattern.elec.Electronics;
+import marketapp.marketapp.productListPattern.foods.Foods;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,7 +26,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author 이영근
  */
-public class AdminPage extends javax.swing.JFrame {
+public class AdminPageScreen extends javax.swing.JFrame {
 
     DefaultTableModel model;
     String filePath = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Data\\ProductList.json";
@@ -40,6 +38,12 @@ public class AdminPage extends javax.swing.JFrame {
     public static String pDesc;
     String imgPath;
 
+    public static String addInputImgPath;
+    public static String addInputProductName;
+    public static String addInputProductDesc;
+    public static String addInputProductPrice;
+    public static String addInputProductCategory;
+
     public String getImgPath() {
         return imgPath;
     }
@@ -48,7 +52,7 @@ public class AdminPage extends javax.swing.JFrame {
         this.imgPath = imgPath;
     }
 
-    public AdminPage() {
+    public AdminPageScreen() {
         initComponents();
         adminProductTable.addMouseListener(new TableMouse());
         adminProductTable.setRowHeight(150);
@@ -97,7 +101,6 @@ public class AdminPage extends javax.swing.JFrame {
         }
         return model;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,8 +121,10 @@ public class AdminPage extends javax.swing.JFrame {
         priceInputTF = new javax.swing.JTextField();
         detailInputTF = new javax.swing.JTextField();
         imgSelector = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addProductButt = new javax.swing.JButton();
+        cancleButt = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        categoryCBox = new javax.swing.JComboBox<>();
         imageChooser = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
         memberManageButt = new javax.swing.JButton();
@@ -142,8 +147,8 @@ public class AdminPage extends javax.swing.JFrame {
 
         addProductFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addProductFrame.setTitle("상품추가 입력폼");
-        addProductFrame.setPreferredSize(new java.awt.Dimension(650, 635));
-        addProductFrame.setSize(new java.awt.Dimension(650, 635));
+        addProductFrame.setPreferredSize(new java.awt.Dimension(650, 700));
+        addProductFrame.setSize(new java.awt.Dimension(650, 700));
         addProductFrame.setType(java.awt.Window.Type.POPUP);
 
         jLabel3.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
@@ -162,6 +167,7 @@ public class AdminPage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("가격");
 
+        imgInputTF.setEditable(false);
         imgInputTF.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
         imgInputTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,11 +194,29 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jButton1.setText("상품 추가");
+        addProductButt.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        addProductButt.setText("상품 추가");
+        addProductButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProductButtActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jButton2.setText("취소");
+        cancleButt.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        cancleButt.setText("취소");
+        cancleButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancleButtActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("카테고리");
+        jLabel7.setMaximumSize(new java.awt.Dimension(54, 25));
+        jLabel7.setPreferredSize(new java.awt.Dimension(54, 25));
+
+        categoryCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전자제품", "도서", "식품" }));
 
         javax.swing.GroupLayout addProductFrameLayout = new javax.swing.GroupLayout(addProductFrame.getContentPane());
         addProductFrame.getContentPane().setLayout(addProductFrameLayout);
@@ -206,51 +230,58 @@ public class AdminPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(detailInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addProductFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addProductFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imgSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addProductFrameLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(priceInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(addProductFrameLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(addProductButt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cancleButt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(addProductFrameLayout.createSequentialGroup()
+                        .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addProductFrameLayout.createSequentialGroup()
+                                .addComponent(imgInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(imgSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(categoryCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         addProductFrameLayout.setVerticalGroup(
             addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductFrameLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(92, 92, 92)
                 .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imgInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imgSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoryCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detailInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(detailInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priceInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(priceInputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(addProductFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addProductButt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancleButt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         imageChooser.setCurrentDirectory(new java.io.File("E:\\DP_marketApp\\MarketApp\\src\\main\\java\\image\\productimage"));
@@ -278,6 +309,8 @@ public class AdminPage extends javax.swing.JFrame {
 
         orderManageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         orderManageButt.setText("주문");
+
+        adminProductList.setPreferredSize(null);
 
         adminProductTable.setModel(Setting());
         adminProductTable.setRowSelectionAllowed(false);
@@ -364,7 +397,7 @@ public class AdminPage extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(adminProductList)
+                .addComponent(adminProductList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
@@ -405,23 +438,52 @@ public class AdminPage extends javax.swing.JFrame {
         productManagePanel.setVisible(true);
     }//GEN-LAST:event_productManageButtActionPerformed
 
-    private void nameInputTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameInputTFActionPerformed
-
     private void addButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtActionPerformed
         // TODO add your handling code here:
         addProductFrame.setVisible(true);
     }//GEN-LAST:event_addButtActionPerformed
 
+    private void cancleButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancleButtActionPerformed
+        // TODO add your handling code here:
+        addProductFrame.dispose();
+    }//GEN-LAST:event_cancleButtActionPerformed
+
+    private void addProductButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtActionPerformed
+        // TODO add your handling code here:
+        this.addInputImgPath = imgInputTF.getText();
+        this.addInputProductName = nameInputTF.getText();
+        this.addInputProductDesc = detailInputTF.getText();
+        this.addInputProductPrice = priceInputTF.getText();
+        this.addInputProductCategory = categoryCBox.getSelectedItem().toString();
+        
+        ImageIcon addInputImg = new ImageIcon(addInputImgPath);
+        if(addInputProductCategory.equals("전자제품")){
+            ProductList elecList = new Electronics();
+            Product eProduct = elecList.addProductList(addInputProductName, addInputProductPrice, addInputProductDesc, addInputImg, addInputProductCategory);
+        } else if(addInputProductCategory.equals("도서")){
+            ProductList bookList = new Books();
+            Product bProduct = bookList.addProductList(addInputProductName, addInputProductPrice, addInputProductDesc, addInputImg, addInputProductCategory);
+        } else if (addInputProductCategory.equals("식품")){
+            ProductList foodList = new Foods();
+            Product fProduct = foodList.addProductList(addInputProductName, addInputProductPrice, addInputProductDesc, addInputImg, addInputProductCategory);
+        }
+
+        adminProductTable.setModel(Setting());
+        adminProductTable.revalidate();
+        adminProductTable.repaint();
+        adminProductList.revalidate();
+        adminProductList.repaint();
+        adminProductList.setVisible(true);
+        
+        addProductFrame.dispose();
+    }//GEN-LAST:event_addProductButtActionPerformed
+
     private void imgSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imgSelectorActionPerformed
         // TODO add your handling code here:
         imageChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
-        FileNameExtensionFilter filter2 = new FileNameExtensionFilter("PNG Images", "png");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF & PNG Images", "jpg", "gif", "png");
 
         imageChooser.setFileFilter(filter);
-        imageChooser.setFileFilter(filter2);
 
         int returnVal = imageChooser.showOpenDialog(null);
         if (returnVal == imageChooser.APPROVE_OPTION) {
@@ -432,33 +494,39 @@ public class AdminPage extends javax.swing.JFrame {
         //imageChooser.setVisible(true);
     }//GEN-LAST:event_imgSelectorActionPerformed
 
+    private void nameInputTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameInputTFActionPerformed
+
     private void imgInputTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imgInputTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_imgInputTFActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButt;
+    private javax.swing.JButton addProductButt;
     private javax.swing.JFrame addProductFrame;
     private javax.swing.JScrollPane adminProductList;
     private javax.swing.JTable adminProductTable;
+    private javax.swing.JButton cancleButt;
+    private javax.swing.JComboBox<String> categoryCBox;
     private javax.swing.JButton deleteButt;
-    public static javax.swing.JTextField detailInputTF;
+    private javax.swing.JTextField detailInputTF;
     private javax.swing.JButton editButt;
     private javax.swing.JFileChooser imageChooser;
-    public static javax.swing.JTextField imgInputTF;
+    private javax.swing.JTextField imgInputTF;
     private javax.swing.JButton imgSelector;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton memberManageButt;
-    public static javax.swing.JTextField nameInputTF;
+    private javax.swing.JTextField nameInputTF;
     private javax.swing.JButton orderManageButt;
-    public static javax.swing.JTextField priceInputTF;
+    private javax.swing.JTextField priceInputTF;
     private javax.swing.JButton productManageButt;
     private javax.swing.JPanel productManagePanel;
     private javax.swing.JButton searchButt;
