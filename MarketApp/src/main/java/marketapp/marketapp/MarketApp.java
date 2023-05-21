@@ -20,7 +20,5 @@ import org.json.simple.parser.ParseException;
 public class MarketApp extends JFrame {
     public static void main(String[] args) throws IOException, ParseException {
         LoginPage LPage = new LoginPage();
-
-        
     }
 }

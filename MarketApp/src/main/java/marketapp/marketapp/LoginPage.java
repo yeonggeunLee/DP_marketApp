@@ -4,7 +4,7 @@
  */
 package marketapp.marketapp;
 
-import marketapp.marketapp.ProductList.ProductListScreen;
+import marketapp.marketapp.ProductList.UserPageScreen;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -256,7 +256,7 @@ public class LoginPage extends javax.swing.JFrame {
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
-                    ProductListScreen pList = new ProductListScreen();
+                    UserPageScreen pList = new UserPageScreen();
                     dispose();
                 }
 
@@ -303,7 +303,7 @@ public class LoginPage extends javax.swing.JFrame {
      * @throws ParseException
      */
     private boolean isValid(String id, String password) throws IOException, ParseException {
-        FileReader reader = new FileReader("src\\main\\java\\JsonData\\join.json");
+        FileReader reader = new FileReader("src\\main\\java\\Data\\join.json");
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
 

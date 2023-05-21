@@ -40,11 +40,11 @@ public class TableMouse implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
 
-            int r = ProductListScreen.productList.getSelectedRow();
+            int r = UserPageScreen.productList.getSelectedRow();
             //int c = Tableicon.table.getSelectedColumn();
-            Object o[] = new Object[ProductListScreen.productList.getColumnCount()];
-            for (int col = 0; col < ProductListScreen.productList.getColumnCount(); col++) {
-                o[col] = ProductListScreen.productList.getValueAt(r, col);
+            Object o[] = new Object[UserPageScreen.productList.getColumnCount()];
+            for (int col = 0; col < UserPageScreen.productList.getColumnCount(); col++) {
+                o[col] = UserPageScreen.productList.getValueAt(r, col);
             }
             this.img = (ImageIcon) o[0];
             this.name = (String) o[1];
