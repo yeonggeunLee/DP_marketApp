@@ -2,12 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package notuse;
+package marketapp.marketapp.Order;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import marketapp.marketapp.Order.ShippingList;
+import marketapp.marketapp.ProductList.UserPageScreen;
+import marketapp.marketapp.LoginPage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,10 +26,17 @@ import org.json.simple.parser.ParseException;
 public class Pay extends javax.swing.JFrame {
 
     public String orderListFilePath = "src\\main\\java\\Data\\OrderList.json";
+    String memberfilePath = "src\\main\\java\\Data\\join.json";
     public static String orderProductName;
+
+    public static String passBal = UserPageScreen.getPassidBal();
 
     public String getOrderProductName() {
         return orderProductName;
+    }
+
+    public static String getPassBal() {
+        return passBal;
     }
 
     /**
@@ -31,6 +44,8 @@ public class Pay extends javax.swing.JFrame {
      */
     public Pay() {
         initComponents();
+        passBal = UserPageScreen.getPassidBal();
+        currentPayBalanceTF.setText(passBal);
         setOrderProduct();
         setVisible(true);
     }
@@ -87,10 +102,10 @@ public class Pay extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        carCompanyCBox = new javax.swing.JComboBox<>();
-        carNumTF = new javax.swing.JTextField();
+        orderPriceTF = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         orderListTA = new javax.swing.JTextArea();
+        currentPayBalanceTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("주문 / 결제");
@@ -155,30 +170,32 @@ public class Pay extends javax.swing.JFrame {
         buttonGroup1.add(payCardRadio);
         payCardRadio.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         payCardRadio.setSelected(true);
-        payCardRadio.setText("카드");
+        payCardRadio.setText("잔고");
         payCardRadio.setToolTipText("");
 
         jLabel7.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("카드사");
+        jLabel7.setText("현재잔고");
 
         jLabel8.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("카드 번호");
+        jLabel8.setText("주문가격");
 
         jLabel9.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("주문내역");
 
-        carCompanyCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KB국민카드", "롯데카드", "신한카드", "하나카드", "BC카드", "삼성카드", "현대카드", "우리카드", "NH농협카드", "씨티카드", "카카오뱅크카드", "토스뱅크카드", "기타(은행/증권)카드" }));
-
-        carNumTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        orderPriceTF.setEditable(false);
+        orderPriceTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
 
         orderListTA.setEditable(false);
         orderListTA.setColumns(20);
         orderListTA.setFont(new java.awt.Font("맑은 고딕", 0, 15)); // NOI18N
         orderListTA.setRows(5);
         jScrollPane1.setViewportView(orderListTA);
+
+        currentPayBalanceTF.setEditable(false);
+        currentPayBalanceTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,14 +212,14 @@ public class Pay extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(carCompanyCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(carNumTF, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(orderPriceTF, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                                    .addComponent(currentPayBalanceTF)))
                             .addComponent(payCardRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +233,11 @@ public class Pay extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carCompanyCBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(currentPayBalanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carNumTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(orderPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
 
@@ -305,6 +322,78 @@ public class Pay extends javax.swing.JFrame {
 
     private void payButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtActionPerformed
         // TODO add your handling code here:
+        int calB1 = Integer.parseInt(currentPayBalanceTF.getText());
+        int calB2 = Integer.parseInt(orderPriceTF.getText());
+        String calFinal = String.valueOf(calB1 - calB2);
+        String currentId = LoginPage.getLoginedID();
+        if (calB1 >= calB2) {
+            this.passBal = calFinal;
+            try {
+                JSONParser parser1 = new JSONParser();
+                Object obj1 = parser1.parse(new FileReader(memberfilePath));
+                JSONObject loadJsonObj1 = (JSONObject) obj1;
+
+                JSONArray memberListArr = (JSONArray) loadJsonObj1.get("member");
+
+                for (int i = 0; i < memberListArr.size(); i++) {
+                    JSONObject memList = (JSONObject) memberListArr.get(i);
+                    String checkId = (String) memList.get("ID");
+                    if (checkId.equals(currentId)) {
+                        memList.replace("Balance", calFinal);
+                        break;
+                    }
+                }
+
+                try {
+                    FileWriter file1 = new FileWriter(memberfilePath);
+                    file1.write(loadJsonObj1.toJSONString());
+                    file1.flush();
+                } catch (IOException ae) {
+                    ae.printStackTrace();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                JSONParser parser = new JSONParser();
+                Object obj2 = parser.parse(new FileReader(orderListFilePath));
+                JSONObject loadJsonObj2 = (JSONObject) obj2;
+                JSONArray orderListArr = (JSONArray) loadJsonObj2.get("주문내역");
+
+                JSONObject orderList = new JSONObject();
+                orderList.put("아이디", currentId);
+                orderList.put("받는사람", shipNameTF.getText().toString());
+                orderList.put("전화번호", shipNumberTF.getText().toString());
+                orderList.put("주소", shipAddressTF.getText().toString());
+                orderList.put("요청사항", shipRequestTF.getText().toString());
+                orderList.put("주문내역", orderListTA.getText().toString());
+
+                orderListArr.add(orderList);
+
+                try {
+                    FileWriter file = new FileWriter(orderListFilePath);
+                    file.write(loadJsonObj2.toJSONString());
+                    file.flush();
+                } catch (IOException ae) {
+                    ae.printStackTrace();
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
+            dispose();
+        } else if (calB1 < calB2) {
+            JOptionPane.showMessageDialog(null, "잔액이 부족합니다.");
+        }
+
+
     }//GEN-LAST:event_payButtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -320,8 +409,7 @@ public class Pay extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelButt;
-    private javax.swing.JComboBox<String> carCompanyCBox;
-    private javax.swing.JTextField carNumTF;
+    public static javax.swing.JTextField currentPayBalanceTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -335,6 +423,7 @@ public class Pay extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTextArea orderListTA;
+    public static javax.swing.JTextField orderPriceTF;
     private javax.swing.JButton payButt;
     private javax.swing.JRadioButton payCardRadio;
     public static javax.swing.JTextField shipAddressTF;

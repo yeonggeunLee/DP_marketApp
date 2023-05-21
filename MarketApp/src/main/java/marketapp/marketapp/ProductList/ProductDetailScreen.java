@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
 import javax.swing.*;
+import marketapp.marketapp.Order.Pay;
 
 /**
  *
@@ -23,7 +24,12 @@ public class ProductDetailScreen extends javax.swing.JFrame {
     public static String pPrice;
     public static String[] pInfo;
     public static ImageIcon img;
-    
+    public static int totalPrice;
+
+    public static int getTotalPrice() {
+        return totalPrice;
+    }
+
     public ProductDetailScreen() {
 
         imgPane = new JPanel() {
@@ -64,7 +70,7 @@ public class ProductDetailScreen extends javax.swing.JFrame {
         nameLabel = new javax.swing.JLabel();
         descLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        productAmountTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("상품 상세");
@@ -142,7 +148,7 @@ public class ProductDetailScreen extends javax.swing.JFrame {
         priceLabel.setFont(new java.awt.Font("맑은 고딕", 0, 16)); // NOI18N
         priceLabel.setText("상품가격");
 
-        jTextField1.setFont(new java.awt.Font("맑은 고딕", 0, 16)); // NOI18N
+        productAmountTF.setFont(new java.awt.Font("맑은 고딕", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,7 +180,7 @@ public class ProductDetailScreen extends javax.swing.JFrame {
                                     .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(descLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(priceLabel)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))))
+                                    .addComponent(productAmountTF, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(73, 73, 73))
         );
@@ -200,7 +206,7 @@ public class ProductDetailScreen extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                    .addComponent(productAmountTF, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buyButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -220,6 +226,23 @@ public class ProductDetailScreen extends javax.swing.JFrame {
 
     private void buyButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtActionPerformed
         // TODO add your handling code here:
+        if (productAmountTF.getText().equals(null) || productAmountTF.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "수량을 입력하세요.");
+        } else {
+            String aa = TableMouse.getPrice();
+            String pAmount = productAmountTF.getText().toString();
+            int passint = Integer.parseInt(aa);
+            int passint2 = Integer.parseInt(pAmount);
+            this.totalPrice = passint * passint2;
+            String orderPrice = String.valueOf(totalPrice);
+
+            String passProduct = TableMouse.getName() + ", " + pAmount + "개";
+            Pay pay = new Pay();
+            pay.orderListTA.setText(passProduct);
+            pay.orderPriceTF.setText(orderPrice);
+            pay.currentPayBalanceTF.setText(pay.getPassBal());
+            dispose();
+        }
     }//GEN-LAST:event_buyButtActionPerformed
 
     private void nameLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_nameLabelPropertyChange
@@ -244,12 +267,12 @@ public class ProductDetailScreen extends javax.swing.JFrame {
     private javax.swing.JLabel descLabel;
     private javax.swing.JLabel imgLabel;
     private javax.swing.JPanel imgPane;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel pCountLabel;
     private javax.swing.JLabel pDescLabel;
     private javax.swing.JLabel pNameLabel;
     private javax.swing.JLabel pPriceLabel;
     private javax.swing.JLabel priceLabel;
+    private javax.swing.JTextField productAmountTF;
     // End of variables declaration//GEN-END:variables
 }

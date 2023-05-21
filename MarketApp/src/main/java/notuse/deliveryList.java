@@ -30,8 +30,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import marketapp.marketapp.Order.ChangeShippingList;
-import marketapp.marketapp.Order.Input;
-import marketapp.marketapp.Order.Payment;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

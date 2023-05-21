@@ -57,7 +57,7 @@
                                   <Component id="nameLabel" max="32767" attributes="0"/>
                                   <Component id="descLabel" max="32767" attributes="0"/>
                                   <Component id="priceLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="0" pref="222" max="32767" attributes="0"/>
+                                  <Component id="productAmountTF" alignment="0" pref="222" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -93,7 +93,7 @@
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="pCountLabel" max="32767" attributes="0"/>
-                  <Component id="jTextField1" pref="43" max="32767" attributes="0"/>
+                  <Component id="productAmountTF" pref="43" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -216,7 +216,7 @@
         <Property name="text" type="java.lang.String" value="&#xc0c1;&#xd488;&#xac00;&#xaca9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="productAmountTF">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="16" style="0"/>

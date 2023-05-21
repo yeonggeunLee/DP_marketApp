@@ -9,14 +9,16 @@ import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import notuse.Pay;
-import marketapp.marketapp.Order.Payment;
+import marketapp.marketapp.LoginPage;
+import marketapp.marketapp.Order.Pay;
+import notuse.Payment;
 import static notuse.ProductListScreen.table;
 import static notuse.ProductListScreen.tableImage;
 import org.json.simple.JSONArray;
@@ -32,7 +34,7 @@ public class UserPageScreen extends javax.swing.JFrame {
 
     DefaultTableModel model;
     String filePath = "src\\main\\java\\Data\\ProductList.json";
-
+    String memberfilePath = "src\\main\\java\\Data\\join.json";
     Object[][] contents;
 
     public static ImageIcon tableImage;
@@ -40,8 +42,16 @@ public class UserPageScreen extends javax.swing.JFrame {
     public static String pPrice;
     public static String pDesc;
 
+    String currentBalanceAmount;
+    String addBalanceAmount;
+    public static int currentB = 0;
 
+    public static String passidBal = LoginPage.getIdBalance();
 
+    public static String getPassidBal() {
+        return passidBal;
+    }
+    
     
     public UserPageScreen() {
         initComponents();
@@ -50,8 +60,6 @@ public class UserPageScreen extends javax.swing.JFrame {
         productList.getTableHeader().setFont(new java.awt.Font("맑은 고딕", 1, 20));
         setVisible(true);
     }
-
-   
 
     public DefaultTableModel getModel() {
         return model;
@@ -108,6 +116,13 @@ public class UserPageScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        balanceFrame = new javax.swing.JFrame();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        currentBalanceTF = new javax.swing.JTextField();
+        addBalanceTF = new javax.swing.JTextField();
+        addBalanceButt = new javax.swing.JButton();
+        cancelBalanceButt = new javax.swing.JButton();
         listPane = new javax.swing.JScrollPane();
         productList = new javax.swing.JTable(){
             @Override
@@ -121,7 +136,75 @@ public class UserPageScreen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
         searchButt = new javax.swing.JButton();
-        OrderButt = new javax.swing.JButton();
+        balanceButt = new javax.swing.JButton();
+
+        balanceFrame.setSize(new java.awt.Dimension(594, 299));
+
+        jLabel3.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("현재잔고");
+
+        jLabel4.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("잔고추가");
+
+        currentBalanceTF.setEditable(false);
+
+        addBalanceButt.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        addBalanceButt.setText("추가");
+        addBalanceButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBalanceButtActionPerformed(evt);
+            }
+        });
+
+        cancelBalanceButt.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        cancelBalanceButt.setText("취소");
+        cancelBalanceButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBalanceButtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout balanceFrameLayout = new javax.swing.GroupLayout(balanceFrame.getContentPane());
+        balanceFrame.getContentPane().setLayout(balanceFrameLayout);
+        balanceFrameLayout.setHorizontalGroup(
+            balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(balanceFrameLayout.createSequentialGroup()
+                .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(balanceFrameLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(addBalanceButt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelBalanceButt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(balanceFrameLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(currentBalanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addBalanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        balanceFrameLayout.setVerticalGroup(
+            balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(balanceFrameLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currentBalanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBalanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(balanceFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addBalanceButt, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(cancelBalanceButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,12 +237,11 @@ public class UserPageScreen extends javax.swing.JFrame {
         searchButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         searchButt.setText("확인");
 
-        OrderButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        OrderButt.setText("주문");
-        OrderButt.setPreferredSize(new java.awt.Dimension(130, 33));
-        OrderButt.addActionListener(new java.awt.event.ActionListener() {
+        balanceButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
+        balanceButt.setText("잔고추가");
+        balanceButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderButtActionPerformed(evt);
+                balanceButtActionPerformed(evt);
             }
         });
 
@@ -174,11 +256,11 @@ public class UserPageScreen extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(OrderButt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MypageButt)
-                            .addComponent(BasketButt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(balanceButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MypageButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BasketButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -191,7 +273,7 @@ public class UserPageScreen extends javax.swing.JFrame {
                         .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchButt, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(258, Short.MAX_VALUE))))
+                        .addContainerGap(264, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,8 +284,8 @@ public class UserPageScreen extends javax.swing.JFrame {
                 .addComponent(BasketButt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(MypageButt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(OrderButt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(balanceButt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(8, 8, 8)
@@ -224,17 +306,91 @@ public class UserPageScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTFActionPerformed
 
-    private void OrderButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtActionPerformed
+    private void balanceButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceButtActionPerformed
         // TODO add your handling code here:
-        Pay pay = new Pay();
-    }//GEN-LAST:event_OrderButtActionPerformed
+        addBalanceTF.setText("");
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader(memberfilePath));
+            JSONObject loadJsonObj = (JSONObject) obj;
+            JSONArray memberListArr = (JSONArray) loadJsonObj.get("member");
+
+            for (int i = 0; i < memberListArr.size(); i++) {
+                JSONObject memList = (JSONObject) memberListArr.get(i);
+                String checkId = (String) memList.get("ID");
+                String currentId = LoginPage.getLoginedID();
+                
+                if (checkId.equals(currentId)) {
+                    String balance = (String) memList.get("Balance");
+                    this.currentBalanceAmount = balance;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        currentBalanceTF.setText(currentBalanceAmount);
+        balanceFrame.setVisible(true);
+    }//GEN-LAST:event_balanceButtActionPerformed
+
+    private void cancelBalanceButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBalanceButtActionPerformed
+        // TODO add your handling code here:
+        balanceFrame.dispose();
+    }//GEN-LAST:event_cancelBalanceButtActionPerformed
+
+    private void addBalanceButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBalanceButtActionPerformed
+        // TODO add your handling code here:
+        this.addBalanceAmount = addBalanceTF.getText().toString();
+        currentB = Integer.parseInt(currentBalanceAmount);
+        currentB += Integer.parseInt(addBalanceAmount);
+        String calBalance = String.valueOf(currentB);
+        this.passidBal = calBalance;
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader(memberfilePath));
+            JSONObject loadJsonObj = (JSONObject) obj;
+            JSONArray memberListArr = (JSONArray) loadJsonObj.get("member");
+
+            for (int i = 0; i < memberListArr.size(); i++) {
+                JSONObject memList = (JSONObject) memberListArr.get(i);
+                String checkId = (String) memList.get("ID");
+                String currentId = LoginPage.getLoginedID();
+                if (checkId.equals(currentId)) {
+                    memList.replace("Balance", calBalance);
+                    
+                    break;
+                }
+            }
+            try {
+                FileWriter file = new FileWriter(memberfilePath);
+                file.write(loadJsonObj.toJSONString());
+                file.flush();
+            } catch (IOException ae) {
+                ae.printStackTrace();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        balanceFrame.dispose();
+    }//GEN-LAST:event_addBalanceButtActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BasketButt;
     private javax.swing.JButton MypageButt;
-    private javax.swing.JButton OrderButt;
+    private javax.swing.JButton addBalanceButt;
+    private javax.swing.JTextField addBalanceTF;
+    private javax.swing.JButton balanceButt;
+    private javax.swing.JFrame balanceFrame;
+    private javax.swing.JButton cancelBalanceButt;
+    private javax.swing.JTextField currentBalanceTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane listPane;
     public static javax.swing.JTable productList;
     private javax.swing.JButton searchButt;

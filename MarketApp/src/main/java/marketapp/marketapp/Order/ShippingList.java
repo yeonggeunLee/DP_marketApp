@@ -4,7 +4,6 @@
  */
 package marketapp.marketapp.Order;
 
-import notuse.Pay;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;

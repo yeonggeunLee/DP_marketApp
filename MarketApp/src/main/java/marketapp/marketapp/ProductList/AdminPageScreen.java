@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import marketapp.marketapp.Order.Payment;
+import notuse.Payment;
 
 import marketapp.marketapp.ProductList.books.BookList;
 import marketapp.marketapp.ProductList.books.Books;

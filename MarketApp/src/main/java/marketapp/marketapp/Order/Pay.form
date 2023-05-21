@@ -258,9 +258,9 @@
                                       <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="carCompanyCBox" min="-2" pref="199" max="-2" attributes="0"/>
-                                      <Component id="carNumTF" min="-2" pref="385" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="orderPriceTF" pref="385" max="32767" attributes="0"/>
+                                      <Component id="currentPayBalanceTF" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="payCardRadio" alignment="0" min="-2" pref="66" max="-2" attributes="0"/>
@@ -271,7 +271,7 @@
                           <Component id="jScrollPane1" min="-2" pref="790" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="326" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -287,12 +287,12 @@
                   <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="carCompanyCBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="currentPayBalanceTF" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="carNumTF" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="orderPriceTF" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               </Group>
@@ -309,7 +309,7 @@
               <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
             </Property>
             <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="&#xce74;&#xb4dc;"/>
+            <Property name="text" type="java.lang.String" value="&#xc794;&#xace0;"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
@@ -319,7 +319,7 @@
               <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#xce74;&#xb4dc;&#xc0ac;"/>
+            <Property name="text" type="java.lang.String" value="&#xd604;&#xc7ac;&#xc794;&#xace0;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -328,7 +328,7 @@
               <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#xce74;&#xb4dc; &#xbc88;&#xd638;"/>
+            <Property name="text" type="java.lang.String" value="&#xc8fc;&#xbb38;&#xac00;&#xaca9;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -340,36 +340,16 @@
             <Property name="text" type="java.lang.String" value="&#xc8fc;&#xbb38;&#xb0b4;&#xc5ed;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="carCompanyCBox">
+        <Component class="javax.swing.JTextField" name="orderPriceTF">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="13">
-                <StringItem index="0" value="KB&#xad6d;&#xbbfc;&#xce74;&#xb4dc;"/>
-                <StringItem index="1" value="&#xb86f;&#xb370;&#xce74;&#xb4dc;"/>
-                <StringItem index="2" value="&#xc2e0;&#xd55c;&#xce74;&#xb4dc;"/>
-                <StringItem index="3" value="&#xd558;&#xb098;&#xce74;&#xb4dc;"/>
-                <StringItem index="4" value="BC&#xce74;&#xb4dc;"/>
-                <StringItem index="5" value="&#xc0bc;&#xc131;&#xce74;&#xb4dc;"/>
-                <StringItem index="6" value="&#xd604;&#xb300;&#xce74;&#xb4dc;"/>
-                <StringItem index="7" value="&#xc6b0;&#xb9ac;&#xce74;&#xb4dc;"/>
-                <StringItem index="8" value="NH&#xb18d;&#xd611;&#xce74;&#xb4dc;"/>
-                <StringItem index="9" value="&#xc528;&#xd2f0;&#xce74;&#xb4dc;"/>
-                <StringItem index="10" value="&#xce74;&#xce74;&#xc624;&#xbc45;&#xd06c;&#xce74;&#xb4dc;"/>
-                <StringItem index="11" value="&#xd1a0;&#xc2a4;&#xbc45;&#xd06c;&#xce74;&#xb4dc;"/>
-                <StringItem index="12" value="&#xae30;&#xd0c0;(&#xc740;&#xd589;/&#xc99d;&#xad8c;)&#xce74;&#xb4dc;"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="carNumTF">
-          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -393,6 +373,17 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="currentPayBalanceTF">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
