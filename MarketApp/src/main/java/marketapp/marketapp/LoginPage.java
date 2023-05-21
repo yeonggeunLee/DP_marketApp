@@ -30,6 +30,17 @@ public class LoginPage extends javax.swing.JFrame {
      * isAdmin 관리자 아이디인지 체크하는 변수
      */
     private boolean isAdmin = false;
+    public static String loginedID;
+
+    public static String getLoginedID() {
+        return loginedID;
+    }
+    
+    public static String idBalance;
+
+    public static String getIdBalance() {
+        return idBalance;
+    }
 
     public LoginPage() {
         initComponents();
@@ -57,7 +68,6 @@ public class LoginPage extends javax.swing.JFrame {
         joinButt = new javax.swing.JButton();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
-        mainPage = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("cououpang");
@@ -197,19 +207,6 @@ public class LoginPage extends javax.swing.JFrame {
                 .addContainerGap(462, Short.MAX_VALUE))
         );
 
-        mainPage.setPreferredSize(new java.awt.Dimension(1440, 960));
-
-        javax.swing.GroupLayout mainPageLayout = new javax.swing.GroupLayout(mainPage);
-        mainPage.setLayout(mainPageLayout);
-        mainPageLayout.setHorizontalGroup(
-            mainPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1440, Short.MAX_VALUE)
-        );
-        mainPageLayout.setVerticalGroup(
-            mainPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,11 +215,6 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(223, 223, 223)
                 .addComponent(loginPage, javax.swing.GroupLayout.DEFAULT_SIZE, 1179, Short.MAX_VALUE)
                 .addGap(44, 44, 44))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, 0)
-                    .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,11 +222,6 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(82, 82, 82)
                 .addComponent(loginPage, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(mainPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -275,7 +262,6 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         JoinPage join = new JoinPage();
         join.setVisible(true);
-
     }//GEN-LAST:event_joinButtActionPerformed
 
 
@@ -288,7 +274,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
-    private javax.swing.JPanel mainPage;
     private javax.swing.JPanel passwordPanel;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwTF;
@@ -315,10 +300,14 @@ public class LoginPage extends javax.swing.JFrame {
             String dataId = (String) member.get("ID");
             String dataPw = (String) member.get("Password");
             String dataType = (String) member.get("Type");
+            String dataBalance = (String) member.get("Balance");
             if (id.equals(dataId) && password.equals(dataPw)) {
                 if ("관리자".equals(dataType)) {
                     isAdmin = true;
+                    this.loginedID = dataId;
                 }
+                this.loginedID = dataId;
+                this.idBalance = dataBalance;
                 return true;
             }
         }

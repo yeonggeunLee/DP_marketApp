@@ -340,6 +340,7 @@ public class JoinPage extends javax.swing.JFrame {
                         object.put("Password", pwSave);
                         object.put("Name", nameSave);
                         object.put("Phone", phoneSave);
+                        object.put("잔고", "0");
                         if (customerB.isSelected()) {
                             object.put("Type", "고객");
                         } else if (adminB.isSelected()) {
@@ -365,6 +366,7 @@ public class JoinPage extends javax.swing.JFrame {
                         object.put("Password", pwSave);
                         object.put("Name", nameSave);
                         object.put("Phone", phoneSave);
+                        object.put("잔고", "0");
                         if (customerB.isSelected()) {
                             object.put("Type", "고객");
                         } else if (adminB.isSelected()) {
