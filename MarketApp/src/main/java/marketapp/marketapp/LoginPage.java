@@ -4,14 +4,14 @@
  */
 package marketapp.marketapp;
 
-import notuse.Products;
-import java.io.FileNotFoundException;
+import marketapp.marketapp.ProductList.UserPageScreen;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import marketapp.marketapp.ProductList.AdminPageScreen;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -252,11 +252,14 @@ public class LoginPage extends javax.swing.JFrame {
             if (isValid(inputId.trim(), inputPw)) {
                 if (isAdmin == true) {
                     JOptionPane.showMessageDialog(null, "관리자 로그인에 성공했습니다.");
+                    AdminPageScreen adminPage = new AdminPageScreen();
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
+                    UserPageScreen pList = new UserPageScreen();
+                    dispose();
                 }
-                dispose();
-                ProductListScreen pList = new ProductListScreen();
+
             } else {
                 JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다.");
             }
@@ -300,7 +303,7 @@ public class LoginPage extends javax.swing.JFrame {
      * @throws ParseException
      */
     private boolean isValid(String id, String password) throws IOException, ParseException {
-        FileReader reader = new FileReader("src\\main\\java\\JsonData\\join.json");
+        FileReader reader = new FileReader("src\\main\\java\\Data\\join.json");
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
 
