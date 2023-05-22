@@ -14,14 +14,16 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import marketapp.marketapp.ProductList.HomeSupply.HomeSupplies;
 import notuse.Payment;
 
-import marketapp.marketapp.ProductList.books.BookList;
-import marketapp.marketapp.ProductList.books.Books;
-import marketapp.marketapp.ProductList.elec.ElectronicList;
-import marketapp.marketapp.ProductList.elec.Electronics;
-import marketapp.marketapp.ProductList.foods.FoodList;
-import marketapp.marketapp.ProductList.foods.Foods;
+import marketapp.marketapp.ProductList.Books.BookList;
+import marketapp.marketapp.ProductList.Books.Books;
+import marketapp.marketapp.ProductList.Elec.ElectronicList;
+import marketapp.marketapp.ProductList.Elec.Electronics;
+import marketapp.marketapp.ProductList.Foods.FoodList;
+import marketapp.marketapp.ProductList.Foods.Foods;
+import marketapp.marketapp.ProductList.etc.etcProduct;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -344,7 +346,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(54, 25));
 
         categoryCBox.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        categoryCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전자제품", "도서", "식품" }));
+        categoryCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전자제품", "도서", "식품", "생활용품", "etc" }));
         categoryCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryCBoxActionPerformed(evt);
@@ -870,6 +872,16 @@ public class AdminPageScreen extends javax.swing.JFrame {
                     Product fProduct = foodList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                     refreshProductList();
                     addProductFrame.dispose();
+                } else if (InputProductCategory.equals("생활용품")) {
+                    ProductList homesupplyList = new HomeSupplies();
+                    Product hProduct = homesupplyList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                    refreshProductList();
+                    addProductFrame.dispose();
+                } else if (InputProductCategory.equals("기타")) {
+                    ProductList etcproductList = new etcProduct();
+                    Product eProduct = etcproductList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                    refreshProductList();
+                    addProductFrame.dispose();
                 }
             } else {
                 addProductFrame.setVisible(true);
@@ -921,6 +933,14 @@ public class AdminPageScreen extends javax.swing.JFrame {
             ProductList foodList = new Foods();
             Product fProduct = foodList.deleteProductList(getSelectedProductName());
             refreshProductList();
+        } else if (getSelectedProductCategory().equals("생활용품")) {
+            ProductList homesupplyList = new HomeSupplies();
+            Product hProduct = homesupplyList.deleteProductList(getSelectedProductName());
+            refreshProductList();
+        } else if (getSelectedProductCategory().equals("기타")) {
+            ProductList etcproductList = new etcProduct();
+            Product eProduct = etcproductList.deleteProductList(getSelectedProductName());
+            refreshProductList();
         }
     }//GEN-LAST:event_deleteButtActionPerformed
 
@@ -960,6 +980,14 @@ public class AdminPageScreen extends javax.swing.JFrame {
             } else if (getSelectedProductCategory().equals("식품")) {
                 ProductList foodList = new Foods();
                 Product fProduct = foodList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                refreshProductList();
+            } else if (getSelectedProductCategory().equals("생활용품")) {
+                ProductList homesupplyList = new HomeSupplies();
+                Product hProduct = homesupplyList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                refreshProductList();
+            } else if (getSelectedProductCategory().equals("기타")) {
+                ProductList etcproductList = new etcProduct();
+                Product eProduct = etcproductList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                 refreshProductList();
             }
         }
@@ -1013,39 +1041,26 @@ public class AdminPageScreen extends javax.swing.JFrame {
             categoryCBox2.revalidate();
             categoryCBox2.repaint();
             categoryCBox2.setVisible(true);
+        } else if (categoryCBox.getSelectedItem().equals("생활용품")) {
+            categoryCBox2.removeAllItems();
+            categoryCBox2.addItem("주방용품");
+            categoryCBox2.addItem("청소용품");
+            categoryCBox2.addItem("욕실용품");
+            categoryCBox2.addItem("etc");
+            categoryCBox2.revalidate();
+            categoryCBox2.repaint();
+            categoryCBox2.setVisible(true);
+        } else if (categoryCBox.getSelectedItem().equals("etc")) {
+            categoryCBox2.removeAllItems();
+            categoryCBox2.addItem("etc");
+            categoryCBox2.revalidate();
+            categoryCBox2.repaint();
+            categoryCBox2.setVisible(true);
         }
     }//GEN-LAST:event_categoryCBoxActionPerformed
 
     private void categoryEditCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryEditCBoxActionPerformed
         // TODO add your handling code here:
-        if (categoryEditCBox.getSelectedItem().equals("전자제품")) {
-            categoryEditCBox2.removeAllItems();
-            categoryEditCBox2.addItem("카메라");
-            categoryEditCBox2.addItem("휴대폰");
-            categoryEditCBox2.addItem("컴퓨터");
-            categoryEditCBox2.addItem("etc");
-            categoryEditCBox2.revalidate();
-            categoryEditCBox2.repaint();
-            categoryEditCBox2.setVisible(true);
-        } else if (categoryEditCBox.getSelectedItem().equals("도서")) {
-            categoryEditCBox2.removeAllItems();
-            categoryEditCBox2.addItem("소설");
-            categoryEditCBox2.addItem("수험서");
-            categoryEditCBox2.addItem("문제집");
-            categoryEditCBox2.addItem("etc");
-            categoryEditCBox2.revalidate();
-            categoryEditCBox2.repaint();
-            categoryEditCBox2.setVisible(true);
-        } else if (categoryEditCBox.getSelectedItem().equals("식품")) {
-            categoryEditCBox2.removeAllItems();
-            categoryEditCBox2.addItem("신선식품");
-            categoryEditCBox2.addItem("가공식품");
-            categoryEditCBox2.addItem("음료");
-            categoryEditCBox2.addItem("etc");
-            categoryEditCBox2.revalidate();
-            categoryEditCBox2.repaint();
-            categoryEditCBox2.setVisible(true);
-        }
     }//GEN-LAST:event_categoryEditCBoxActionPerformed
 
     private void searchButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtActionPerformed
@@ -1061,6 +1076,12 @@ public class AdminPageScreen extends javax.swing.JFrame {
         } else if (getCategoryFromList(searchInput).equals("식품")) {
             ProductList foodList = new Foods();
             Product fProduct = foodList.readProductList(searchInput);
+        } else if (getCategoryFromList(searchInput).equals("생활용품")) {
+            ProductList homesupplyList = new HomeSupplies();
+            Product hProduct = homesupplyList.readProductList(searchInput);
+        } else if (getCategoryFromList(searchInput).equals("기타")) {
+            ProductList etcproductList = new etcProduct();
+            Product eProduct = etcproductList.readProductList(searchInput);
         }
 
         adminProductTable.setModel(SearchSetting());

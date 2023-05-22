@@ -1,4 +1,4 @@
-package marketapp.marketapp.ProductList.foods;
+package marketapp.marketapp.ProductList.Foods;
 
 import marketapp.marketapp.ProductList.Product;
 import marketapp.marketapp.ProductList.ProductList;

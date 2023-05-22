@@ -259,10 +259,12 @@
               <Font name="&#xb9d1;&#xc740; &#xace0;&#xb515;" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="5">
                 <StringItem index="0" value="&#xc804;&#xc790;&#xc81c;&#xd488;"/>
                 <StringItem index="1" value="&#xb3c4;&#xc11c;"/>
                 <StringItem index="2" value="&#xc2dd;&#xd488;"/>
+                <StringItem index="3" value="&#xc0dd;&#xd65c;&#xc6a9;&#xd488;"/>
+                <StringItem index="4" value="etc"/>
               </StringArray>
             </Property>
           </Properties>

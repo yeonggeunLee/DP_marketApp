@@ -1,7 +1,7 @@
 package notuse;
 
-import marketapp.marketapp.ProductList.elec.Electronics;
-import marketapp.marketapp.ProductList.foods.Foods;
+import marketapp.marketapp.ProductList.Elec.Electronics;
+import marketapp.marketapp.ProductList.Foods.Foods;
 
 import javax.swing.*;
 import marketapp.marketapp.ProductList.Product;

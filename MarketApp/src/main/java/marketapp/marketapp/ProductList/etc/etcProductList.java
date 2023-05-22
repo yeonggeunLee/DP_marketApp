@@ -1,6 +1,6 @@
-package marketapp.marketapp.ProductList.Foods;
+package marketapp.marketapp.ProductList.etc;
 
-import notuse.CRUD;
+import marketapp.marketapp.ProductList.HomeSupply.*;
 import marketapp.marketapp.ProductList.Product;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,7 +10,8 @@ import org.json.simple.parser.ParseException;
 import javax.swing.*;
 import java.io.*;
 
-public class FoodList extends Product {
+public class etcProductList extends Product {
+
     private static final String FILEPATH = "src\\main\\java\\Data\\ProductList.json";
     File fileP = new File(FILEPATH);
 
@@ -20,7 +21,7 @@ public class FoodList extends Product {
         return checkSameProduct;
     }
 
-    public FoodList(String name, String crud) {
+    public etcProductList(String name, String crud) {
         productName = name;
         CRUDType = crud;
         if (CRUDType.equals("read")) {
@@ -30,7 +31,7 @@ public class FoodList extends Product {
         }
     }
 
-    public FoodList(String name, String price, String desc, ImageIcon image, String type, String crud) {
+    public etcProductList(String name, String price, String desc, ImageIcon image, String type, String crud) {
         //super();
         productName = name;
         productPrice = price;
@@ -56,6 +57,7 @@ public class FoodList extends Product {
                 productInfo.put("상품정보", productDesc);
                 productInfo.put("이미지", image);
                 productInfo.put("카테고리", productCategory);
+                
 
                 JSONArray productInfoArr = new JSONArray();
                 productInfoArr.add(productInfo);
@@ -75,7 +77,6 @@ public class FoodList extends Product {
                 Object obj = parser.parse(new FileReader(FILEPATH));
                 JSONObject loadJsonObj = (JSONObject) obj;
                 JSONArray productInfoArr = (JSONArray) loadJsonObj.get("상품목록");
-
 
                 if (productInfoArr.size() > 0) {
                     for (int i = 0; i < productInfoArr.size(); i++) {
@@ -233,13 +234,13 @@ public class FoodList extends Product {
                         JSONObject productObj = (JSONObject) productInfoArr.get(i);
                         String productInfo = (String) productObj.get("상품명");
                         if (productName.equals(productInfo)) {
-                        /*
+                            /*
                         productObj.remove("상품명");
                         productObj.remove("상품정보");
                         productObj.remove("카테고리");
                         productObj.remove("이미지");
                         productObj.remove("가격");
-                        */
+                             */
                             productInfoArr.remove(i);
                             try {
                                 FileWriter file = new FileWriter(FILEPATH);
