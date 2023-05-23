@@ -1,8 +1,8 @@
-package marketapp.marketapp.ProductList.elec;
+package marketapp.marketapp.ProductList.Elec;
 
 import marketapp.marketapp.ProductList.Product;
 import marketapp.marketapp.ProductList.ProductList;
-import marketapp.marketapp.ProductList.foods.FoodList;
+import marketapp.marketapp.ProductList.Foods.FoodList;
 
 import javax.swing.*;
 

@@ -1,6 +1,5 @@
-package marketapp.marketapp.ProductList.foods;
+package marketapp.marketapp.ProductList.Foods;
 
-import notuse.CRUD;
 import marketapp.marketapp.ProductList.Product;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +10,7 @@ import javax.swing.*;
 import java.io.*;
 
 public class FoodList extends Product {
-    private static final String FILEPATH = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Data\\ProductList.json";
+    private static final String FILEPATH = "src\\main\\java\\Data\\ProductList.json";
     File fileP = new File(FILEPATH);
 
     public static Boolean checkSameProduct = false;

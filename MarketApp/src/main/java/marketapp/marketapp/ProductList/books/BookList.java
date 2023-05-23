@@ -1,4 +1,4 @@
-package marketapp.marketapp.ProductList.books;
+package marketapp.marketapp.ProductList.Books;
 
 import marketapp.marketapp.ProductList.Product;
 import org.json.simple.JSONArray;
@@ -11,7 +11,7 @@ import java.io.*;
 
 public class BookList extends Product {
 
-    private static final String FILEPATH = "src\\main\\java\\marketapp\\marketapp\\productListPattern\\Data\\ProductList.json";
+    private static final String FILEPATH = "src\\main\\java\\Data\\ProductList.json";
     File fileP = new File(FILEPATH);
 
     public static Boolean checkSameProduct = false;
