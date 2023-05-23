@@ -240,7 +240,6 @@ public class ProductDetailScreen extends javax.swing.JFrame {
             Pay pay = new Pay();
             pay.orderListTA.setText(passProduct);
             pay.orderPriceTF.setText(orderPrice);
-            pay.currentPayBalanceTF.setText(pay.getPassBal());
             dispose();
         }
     }//GEN-LAST:event_buyButtActionPerformed

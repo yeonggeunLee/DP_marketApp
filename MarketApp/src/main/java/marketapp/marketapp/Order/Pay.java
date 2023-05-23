@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import marketapp.marketapp.Order.ShippingList;
 import marketapp.marketapp.ProductList.UserPageScreen;
 import marketapp.marketapp.LoginPage;
+import marketapp.marketapp.Order.PayPattern.BalancePayment;
+import marketapp.marketapp.Order.PayPattern.Payment;
+import marketapp.marketapp.Order.PayPattern.PaymentStrategy;
+import marketapp.marketapp.Order.PayPattern.TransferPayment;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -31,15 +35,12 @@ public class Pay extends javax.swing.JFrame {
     public String orderListFilePath = "src\\main\\java\\Data\\OrderList.json";
     String memberfilePath = "src\\main\\java\\Data\\join.json";
     public static String orderProductName;
-
     public static String passBal = UserPageScreen.getPassidBal();
+
+    Payment payment = new Payment();
 
     public String getOrderProductName() {
         return orderProductName;
-    }
-
-    public static String getPassBal() {
-        return passBal;
     }
 
     /**
@@ -47,10 +48,38 @@ public class Pay extends javax.swing.JFrame {
      */
     public Pay() {
         initComponents();
-        passBal = UserPageScreen.getPassidBal();
+        transferPayPanel.setVisible(false);
+        this.passBal = getBalance();
         currentPayBalanceTF.setText(passBal);
         setOrderProduct();
         setVisible(true);
+    }
+
+    public String getBalance() {
+        String currentId = LoginPage.getLoginedID();
+        String currentBalance = null;
+        try {
+            JSONParser parser1 = new JSONParser();
+            Object obj1 = parser1.parse(new FileReader(memberfilePath));
+            JSONObject loadJsonObj1 = (JSONObject) obj1;
+            JSONArray memberListArr = (JSONArray) loadJsonObj1.get("member");
+
+            for (int i = 0; i < memberListArr.size(); i++) {
+                JSONObject memList = (JSONObject) memberListArr.get(i);
+                String checkId = (String) memList.get("ID");
+                if (checkId.equals(currentId)) {
+                    currentBalance = (String) memList.get("Balance");
+                    break;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return currentBalance;
     }
 
     public void setOrderProduct() {
@@ -420,13 +449,14 @@ public class Pay extends javax.swing.JFrame {
         int calB1 = Integer.parseInt(currentPayBalanceTF.getText());
         int calB2 = Integer.parseInt(orderPriceTF.getText());
         String calFinal = String.valueOf(calB1 - calB2);
+        this.passBal = calFinal;
         String currentId = LoginPage.getLoginedID();
         ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         if (payBalanceRadio.isSelected()) {
             if (calB1 >= calB2) {
-                this.passBal = calFinal;
+                /*
                 try {
                     JSONParser parser1 = new JSONParser();
                     Object obj1 = parser1.parse(new FileReader(memberfilePath));
@@ -488,12 +518,17 @@ public class Pay extends javax.swing.JFrame {
                 } catch (ParseException ex) {
                     Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                 */
+                PaymentStrategy balancePayment = new BalancePayment();
+                payment.setPaymentStrategy(balancePayment);
+                payment.performPayment(calFinal);
                 JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
                 dispose();
             } else if (calB1 < calB2) {
                 JOptionPane.showMessageDialog(null, "잔액이 부족합니다.");
             }
         } else if (payTransferRadio.isSelected()) {
+            /*
             try {
                 JSONParser parser = new JSONParser();
                 Object obj2 = parser.parse(new FileReader(orderListFilePath));
@@ -526,6 +561,10 @@ public class Pay extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
             }
+             */
+            PaymentStrategy transferPayment = new TransferPayment();
+            payment.setPaymentStrategy(transferPayment);
+            payment.performPayment(calFinal);
             JOptionPane.showMessageDialog(null, "1시간 내로 입금 완료되지 않으면 주문이 취소됩니다.");
             dispose();
         }

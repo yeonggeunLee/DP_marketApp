@@ -1,6 +1,5 @@
 package marketapp.marketapp.ProductList.Foods;
 
-import notuse.CRUD;
 import marketapp.marketapp.ProductList.Product;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
