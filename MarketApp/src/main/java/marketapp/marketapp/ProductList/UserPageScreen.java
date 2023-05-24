@@ -16,7 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import marketapp.marketapp.LoginPage;
+import marketapp.marketapp.Login.LoginPage;
+import marketapp.marketapp.MyPage.MyPageScreen;
 import marketapp.marketapp.Order.Pay;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -219,12 +220,16 @@ public class UserPageScreen extends javax.swing.JFrame {
 
         MypageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         MypageButt.setText("마이페이지");
+        MypageButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MypageButtActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
         jLabel2.setText("검색");
 
         searchTF.setFont(new java.awt.Font("맑은 고딕", 0, 20)); // NOI18N
-        searchTF.setText("상품명");
         searchTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchTFActionPerformed(evt);
@@ -232,7 +237,12 @@ public class UserPageScreen extends javax.swing.JFrame {
         });
 
         searchButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        searchButt.setText("확인");
+        searchButt.setText("검색");
+        searchButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtActionPerformed(evt);
+            }
+        });
 
         balanceButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         balanceButt.setText("잔고추가");
@@ -356,7 +366,6 @@ public class UserPageScreen extends javax.swing.JFrame {
                 String currentId = LoginPage.getLoginedID();
                 if (checkId.equals(currentId)) {
                     memList.replace("Balance", calBalance);
-                    
                     break;
                 }
             }
@@ -374,6 +383,15 @@ public class UserPageScreen extends javax.swing.JFrame {
         }
         balanceFrame.dispose();
     }//GEN-LAST:event_addBalanceButtActionPerformed
+
+    private void MypageButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MypageButtActionPerformed
+        // TODO add your handling code here:
+        MyPageScreen mypage = new MyPageScreen();
+    }//GEN-LAST:event_MypageButtActionPerformed
+
+    private void searchButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BasketButt;
