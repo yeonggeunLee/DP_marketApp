@@ -347,6 +347,7 @@ public class ShippingList extends javax.swing.JFrame {
 
     private void selectShippingListButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectShippingListButtActionPerformed
         // TODO add your handling code here:
+        Pay.setCheckAddressInput2(true);
         srow = shippingListTable.getSelectedRow();
         this.tableName = (String) shippingListTable.getValueAt(srow, 0);
         if (srow == -1) {

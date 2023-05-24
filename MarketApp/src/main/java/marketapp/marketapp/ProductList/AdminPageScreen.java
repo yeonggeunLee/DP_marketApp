@@ -18,6 +18,7 @@ import marketapp.marketapp.ProductList.HomeSupply.HomeSupplies;
 
 import marketapp.marketapp.ProductList.Books.BookList;
 import marketapp.marketapp.ProductList.Books.Books;
+import marketapp.marketapp.ProductList.Clothes.Clothes;
 import marketapp.marketapp.ProductList.Elec.ElectronicList;
 import marketapp.marketapp.ProductList.Elec.Electronics;
 import marketapp.marketapp.ProductList.Foods.FoodList;
@@ -112,8 +113,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
             }
 
             this.model = new DefaultTableModel(contents, header) {
-                //  Returning the Class of each column will allow different
-                //  renderers to be used based on Class
                 public Class getColumnClass(int column) {
                     return getValueAt(0, column).getClass();
                 }
@@ -152,11 +151,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
                     contents[i][1] = jObj.get("상품명");
                     contents[i][2] = jObj.get("상품정보");
                     contents[i][3] = jObj.get("가격");
-                    /*
-                    this.pName = (String) jObj.get("상품명");
-                    this.pPrice = (String) jObj.get("가격");
-                    this.pDesc = (String) jObj.get("상품정보");
-                     */
                     break;
                 }
             }
@@ -256,9 +250,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        memberManageButt = new javax.swing.JButton();
-        productManageButt = new javax.swing.JButton();
-        orderManageButt = new javax.swing.JButton();
         adminProductList = new javax.swing.JScrollPane();
         adminProductTable = new javax.swing.JTable(){
             @Override
@@ -267,12 +258,12 @@ public class AdminPageScreen extends javax.swing.JFrame {
             }
         };
         productManagePanel = new javax.swing.JPanel();
-        addButt = new javax.swing.JButton();
-        deleteButt = new javax.swing.JButton();
         editButt = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        deleteButt = new javax.swing.JButton();
         searchTF = new javax.swing.JTextField();
         searchButt = new javax.swing.JButton();
+        addButt = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         addProductFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addProductFrame.setTitle("상품추가 입력폼");
@@ -345,7 +336,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(54, 25));
 
         categoryCBox.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        categoryCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전자제품", "도서", "식품", "생활용품", "etc" }));
+        categoryCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전자제품", "도서", "식품", "생활용품", "의류", "etc" }));
         categoryCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryCBoxActionPerformed(evt);
@@ -634,35 +625,16 @@ public class AdminPageScreen extends javax.swing.JFrame {
         jLabel1.setText("Cououpang");
         jLabel1.setToolTipText("");
 
-        memberManageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        memberManageButt.setText("회원관리");
-
-        productManageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        productManageButt.setText("물건관리");
-        productManageButt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productManageButtActionPerformed(evt);
-            }
-        });
-
-        orderManageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        orderManageButt.setText("주문");
-        orderManageButt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderManageButtActionPerformed(evt);
-            }
-        });
-
         adminProductTable.setModel(Setting());
         adminProductTable.setRowSelectionAllowed(false);
         adminProductTable.getTableHeader().setReorderingAllowed(false);
         adminProductList.setViewportView(adminProductTable);
 
-        addButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        addButt.setText("추가");
-        addButt.addActionListener(new java.awt.event.ActionListener() {
+        editButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
+        editButt.setText("수정");
+        editButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtActionPerformed(evt);
+                editButtActionPerformed(evt);
             }
         });
 
@@ -674,19 +646,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
             }
         });
 
-        editButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
-        editButt.setText("수정");
-        editButt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("맑은 고딕", 0, 20)); // NOI18N
-        jLabel2.setText("검색");
-
         searchTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
-        searchTF.setText("상품명");
         searchTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchTFActionPerformed(evt);
@@ -701,12 +661,23 @@ public class AdminPageScreen extends javax.swing.JFrame {
             }
         });
 
+        addButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
+        addButt.setText("추가");
+        addButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("맑은 고딕", 0, 20)); // NOI18N
+        jLabel2.setText("검색");
+
         javax.swing.GroupLayout productManagePanelLayout = new javax.swing.GroupLayout(productManagePanel);
         productManagePanel.setLayout(productManagePanelLayout);
         productManagePanelLayout.setHorizontalGroup(
             productManagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productManagePanelLayout.createSequentialGroup()
-                .addGap(215, 215, 215)
+                .addContainerGap()
                 .addComponent(addButt, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deleteButt, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -718,12 +689,11 @@ public class AdminPageScreen extends javax.swing.JFrame {
                 .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(searchButt, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(1299, Short.MAX_VALUE))
         );
         productManagePanelLayout.setVerticalGroup(
             productManagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productManagePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(productManagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(productManagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(editButt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -733,8 +703,8 @@ public class AdminPageScreen extends javax.swing.JFrame {
                         .addComponent(searchButt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(productManagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(deleteButt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addButt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(addButt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -744,39 +714,25 @@ public class AdminPageScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(orderManageButt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(productManageButt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addComponent(memberManageButt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(adminProductList)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(productManagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adminProductList, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productManagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(memberManageButt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(productManageButt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(orderManageButt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(adminProductList, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminProductList, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(productManagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -787,12 +743,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
     private void searchTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTFActionPerformed
-
-    private void productManageButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productManageButtActionPerformed
-        // TODO add your handling code here:
-        adminProductList.setVisible(true);
-        productManagePanel.setVisible(true);
-    }//GEN-LAST:event_productManageButtActionPerformed
 
     private void addButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtActionPerformed
         // TODO add your handling code here:
@@ -817,34 +767,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
         String inputTest3 = detailInputTF.getText();
         String inputTest4 = priceInputTF.getText();
 
-        /*String sameProduct = "";
-        Boolean sameProductCheck = false;
-        
-        try{
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader(filePath));
-            JSONObject JsonObj = (JSONObject) obj;
-            JSONArray productInfoArr = (JSONArray) JsonObj.get("상품목록");
-            
-            for (int i = 0; i < productInfoArr.size(); i++) {
-                JSONObject jObj = (JSONObject) productInfoArr.get(i);
-                sameProduct = (String) jObj.get("상품명");
-                if(inputTest1.equals(sameProduct)){
-                    sameProductCheck = true;
-                    break;
-                }
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AdminPageScreen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AdminPageScreen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(AdminPageScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if(sameProductCheck == true){
-            JOptionPane.showMessageDialog(null, "같은 상품이 존재합니다.");
-        }*/
         if ((inputTest1.equals(null) || inputTest1.equals("")) || (inputTest2.equals(null) || inputTest2.equals("")) || (inputTest3.equals(null) || inputTest3.equals("")) || (inputTest4.equals(null) || inputTest4.equals(""))) {
             JOptionPane.showMessageDialog(null, "상품 정보를 입력해주세요.");
         } else {
@@ -874,6 +796,11 @@ public class AdminPageScreen extends javax.swing.JFrame {
                 } else if (InputProductCategory.equals("생활용품")) {
                     ProductList homesupplyList = new HomeSupplies();
                     Product hProduct = homesupplyList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                    refreshProductList();
+                    addProductFrame.dispose();
+                } else if (InputProductCategory.equals("의류")) {
+                    ProductList clothesproductList = new Clothes();
+                    Product cProduct = clothesproductList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                     refreshProductList();
                     addProductFrame.dispose();
                 } else if (InputProductCategory.equals("기타")) {
@@ -936,6 +863,10 @@ public class AdminPageScreen extends javax.swing.JFrame {
             ProductList homesupplyList = new HomeSupplies();
             Product hProduct = homesupplyList.deleteProductList(getSelectedProductName());
             refreshProductList();
+        } else if (getSelectedProductCategory().equals("의류")) {
+            ProductList clothesproductList = new Clothes();
+            Product cProduct = clothesproductList.deleteProductList(getSelectedProductName());
+            refreshProductList();
         } else if (getSelectedProductCategory().equals("기타")) {
             ProductList etcproductList = new etcProduct();
             Product eProduct = etcproductList.deleteProductList(getSelectedProductName());
@@ -983,6 +914,10 @@ public class AdminPageScreen extends javax.swing.JFrame {
             } else if (getSelectedProductCategory().equals("생활용품")) {
                 ProductList homesupplyList = new HomeSupplies();
                 Product hProduct = homesupplyList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
+                refreshProductList();
+            } else if (getSelectedProductCategory().equals("의류")) {
+                ProductList clothesproductList = new Clothes();
+                Product cProduct = clothesproductList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                 refreshProductList();
             } else if (getSelectedProductCategory().equals("기타")) {
                 ProductList etcproductList = new etcProduct();
@@ -1049,6 +984,15 @@ public class AdminPageScreen extends javax.swing.JFrame {
             categoryCBox2.revalidate();
             categoryCBox2.repaint();
             categoryCBox2.setVisible(true);
+        } else if (categoryCBox.getSelectedItem().equals("의류")) {
+            categoryCBox2.removeAllItems();
+            categoryCBox2.addItem("남성의류");
+            categoryCBox2.addItem("여성의류");
+            categoryCBox2.addItem("신발");
+            categoryCBox2.addItem("etc");
+            categoryCBox2.revalidate();
+            categoryCBox2.repaint();
+            categoryCBox2.setVisible(true);
         } else if (categoryCBox.getSelectedItem().equals("etc")) {
             categoryCBox2.removeAllItems();
             categoryCBox2.addItem("etc");
@@ -1078,6 +1022,9 @@ public class AdminPageScreen extends javax.swing.JFrame {
         } else if (getCategoryFromList(searchInput).equals("생활용품")) {
             ProductList homesupplyList = new HomeSupplies();
             Product hProduct = homesupplyList.readProductList(searchInput);
+        } else if (getCategoryFromList(searchInput).equals("의류")) {
+            ProductList clothesList = new Clothes();
+            Product cProduct = clothesList.readProductList(searchInput);
         } else if (getCategoryFromList(searchInput).equals("기타")) {
             ProductList etcproductList = new etcProduct();
             Product eProduct = etcproductList.readProductList(searchInput);
@@ -1090,11 +1037,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
         adminProductList.repaint();
         adminProductList.setVisible(true);
     }//GEN-LAST:event_searchButtActionPerformed
-
-    private void orderManageButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderManageButtActionPerformed
-        // TODO add your handling code here:
-        //payment order = new payment();
-    }//GEN-LAST:event_orderManageButtActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButt;
@@ -1135,13 +1077,10 @@ public class AdminPageScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JButton memberManageButt;
     public static javax.swing.JTextField nameEditTF;
     public static javax.swing.JTextField nameInputTF;
-    private javax.swing.JButton orderManageButt;
     public static javax.swing.JTextField priceEditTF;
     public static javax.swing.JTextField priceInputTF;
-    private javax.swing.JButton productManageButt;
     private javax.swing.JPanel productManagePanel;
     private javax.swing.JButton searchButt;
     private javax.swing.JTextField searchTF;

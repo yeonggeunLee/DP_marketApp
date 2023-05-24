@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import marketapp.marketapp.Order.ShippingList;
 import marketapp.marketapp.ProductList.UserPageScreen;
-import marketapp.marketapp.LoginPage;
+import marketapp.marketapp.Login.LoginPage;
 import marketapp.marketapp.Order.PayPattern.BalancePayment;
 import marketapp.marketapp.Order.PayPattern.Payment;
 import marketapp.marketapp.Order.PayPattern.PaymentStrategy;
@@ -36,8 +36,13 @@ public class Pay extends javax.swing.JFrame {
     String memberfilePath = "src\\main\\java\\Data\\join.json";
     public static String orderProductName;
     public static String passBal = UserPageScreen.getPassidBal();
-
+    public static Boolean checkAddressInput = false;
+    public static Boolean checkAddressInput2 = false;
     Payment payment = new Payment();
+
+    public static void setCheckAddressInput2(Boolean checkAddressInput2) {
+        Pay.checkAddressInput2 = checkAddressInput2;
+    }
 
     public String getOrderProductName() {
         return orderProductName;
@@ -48,6 +53,8 @@ public class Pay extends javax.swing.JFrame {
      */
     public Pay() {
         initComponents();
+        checkAddressInput = false;
+        checkAddressInput2 = false;
         transferPayPanel.setVisible(false);
         this.passBal = getBalance();
         currentPayBalanceTF.setText(passBal);
@@ -446,134 +453,41 @@ public class Pay extends javax.swing.JFrame {
 
     private void payButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtActionPerformed
         // TODO add your handling code here:
-        int calB1 = Integer.parseInt(currentPayBalanceTF.getText());
-        int calB2 = Integer.parseInt(orderPriceTF.getText());
-        String calFinal = String.valueOf(calB1 - calB2);
-        this.passBal = calFinal;
-        String currentId = LoginPage.getLoginedID();
-        ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        if (checkAddressInput == true && checkAddressInput2 == true) {
+            int calB1 = Integer.parseInt(currentPayBalanceTF.getText());
+            int calB2 = Integer.parseInt(orderPriceTF.getText());
+            String calFinal = String.valueOf(calB1 - calB2);
+            this.passBal = calFinal;
+            String currentId = LoginPage.getLoginedID();
+            ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        if (payBalanceRadio.isSelected()) {
-            if (calB1 >= calB2) {
-                /*
-                try {
-                    JSONParser parser1 = new JSONParser();
-                    Object obj1 = parser1.parse(new FileReader(memberfilePath));
-                    JSONObject loadJsonObj1 = (JSONObject) obj1;
-
-                    JSONArray memberListArr = (JSONArray) loadJsonObj1.get("member");
-
-                    for (int i = 0; i < memberListArr.size(); i++) {
-                        JSONObject memList = (JSONObject) memberListArr.get(i);
-                        String checkId = (String) memList.get("ID");
-                        if (checkId.equals(currentId)) {
-                            memList.replace("Balance", calFinal);
-                            break;
-                        }
-                    }
-
-                    try {
-                        FileWriter file1 = new FileWriter(memberfilePath);
-                        file1.write(loadJsonObj1.toJSONString());
-                        file1.flush();
-                    } catch (IOException ae) {
-                        ae.printStackTrace();
-                    }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
+            if (payBalanceRadio.isSelected()) {
+                if (calB1 >= calB2) {
+                    PaymentStrategy balancePayment = new BalancePayment();
+                    payment.setPaymentStrategy(balancePayment);
+                    payment.performPayment(calFinal);
+                    JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
+                    dispose();
+                } else if (calB1 < calB2) {
+                    JOptionPane.showMessageDialog(null, "잔액이 부족합니다.");
                 }
-
-                try {
-                    JSONParser parser = new JSONParser();
-                    Object obj2 = parser.parse(new FileReader(orderListFilePath));
-                    JSONObject loadJsonObj2 = (JSONObject) obj2;
-                    JSONArray orderListArr = (JSONArray) loadJsonObj2.get("주문내역");
-
-                    JSONObject orderList = new JSONObject();
-                    orderList.put("아이디", currentId);
-                    orderList.put("받는사람", shipNameTF.getText().toString());
-                    orderList.put("전화번호", shipNumberTF.getText().toString());
-                    orderList.put("주소", shipAddressTF.getText().toString());
-                    orderList.put("요청사항", shipRequestTF.getText().toString());
-                    orderList.put("주문내역", orderListTA.getText().toString());
-                    orderList.put("결제방식", "잔고");
-                    orderList.put("결제상태", "결제완료");
-                    orderList.put("결제시간", time.format(formatter));
-                    orderListArr.add(orderList);
-
-                    try {
-                        FileWriter file = new FileWriter(orderListFilePath);
-                        file.write(loadJsonObj2.toJSONString());
-                        file.flush();
-                    } catch (IOException ae) {
-                        ae.printStackTrace();
-                    }
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                 */
-                PaymentStrategy balancePayment = new BalancePayment();
-                payment.setPaymentStrategy(balancePayment);
+            } else if (payTransferRadio.isSelected()) {
+                PaymentStrategy transferPayment = new TransferPayment();
+                payment.setPaymentStrategy(transferPayment);
                 payment.performPayment(calFinal);
-                JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
+                JOptionPane.showMessageDialog(null, "1시간 내로 입금 완료되지 않으면 주문이 취소됩니다.");
                 dispose();
-            } else if (calB1 < calB2) {
-                JOptionPane.showMessageDialog(null, "잔액이 부족합니다.");
             }
-        } else if (payTransferRadio.isSelected()) {
-            /*
-            try {
-                JSONParser parser = new JSONParser();
-                Object obj2 = parser.parse(new FileReader(orderListFilePath));
-                JSONObject loadJsonObj2 = (JSONObject) obj2;
-                JSONArray orderListArr = (JSONArray) loadJsonObj2.get("주문내역");
-
-                JSONObject orderList = new JSONObject();
-                orderList.put("아이디", currentId);
-                orderList.put("받는사람", shipNameTF.getText().toString());
-                orderList.put("전화번호", shipNumberTF.getText().toString());
-                orderList.put("주소", shipAddressTF.getText().toString());
-                orderList.put("요청사항", shipRequestTF.getText().toString());
-                orderList.put("주문내역", orderListTA.getText().toString());
-                orderList.put("결제방식", "계좌이체");
-                orderList.put("결제상태", "임금대기");
-                orderList.put("결제시간", time.format(formatter));
-                orderListArr.add(orderList);
-
-                try {
-                    FileWriter file = new FileWriter(orderListFilePath);
-                    file.write(loadJsonObj2.toJSONString());
-                    file.flush();
-                } catch (IOException ae) {
-                    ae.printStackTrace();
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             */
-            PaymentStrategy transferPayment = new TransferPayment();
-            payment.setPaymentStrategy(transferPayment);
-            payment.performPayment(calFinal);
-            JOptionPane.showMessageDialog(null, "1시간 내로 입금 완료되지 않으면 주문이 취소됩니다.");
-            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "배송주소를 선택해주세요.");
         }
-
     }//GEN-LAST:event_payButtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ShippingList sList = new ShippingList();
+        this.checkAddressInput = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cancelButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtActionPerformed
