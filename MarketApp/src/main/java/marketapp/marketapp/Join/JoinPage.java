@@ -126,7 +126,7 @@ public class JoinPage extends javax.swing.JFrame {
             }
         });
 
-        phoneTF.setText("010-0000-0000");
+        phoneTF.setToolTipText("");
         phoneTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneTFActionPerformed(evt);
@@ -155,6 +155,7 @@ public class JoinPage extends javax.swing.JFrame {
             }
         });
 
+        idcButton.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         idcButton.setText("확인");
         idcButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +163,7 @@ public class JoinPage extends javax.swing.JFrame {
             }
         });
 
+        pwcButton.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         pwcButton.setText("확인");
         pwcButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +173,7 @@ public class JoinPage extends javax.swing.JFrame {
 
         pw2Label.setText("비밀번호 재확인");
 
+        pwc2Button.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         pwc2Button.setText("재확인");
         pwc2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

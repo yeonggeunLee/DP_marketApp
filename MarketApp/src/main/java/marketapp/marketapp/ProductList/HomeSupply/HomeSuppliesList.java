@@ -56,7 +56,6 @@ public class HomeSuppliesList extends Product {
                 productInfo.put("상품정보", productDesc);
                 productInfo.put("이미지", image);
                 productInfo.put("카테고리", productCategory);
-                
 
                 JSONArray productInfoArr = new JSONArray();
                 productInfoArr.add(productInfo);
@@ -233,13 +232,6 @@ public class HomeSuppliesList extends Product {
                         JSONObject productObj = (JSONObject) productInfoArr.get(i);
                         String productInfo = (String) productObj.get("상품명");
                         if (productName.equals(productInfo)) {
-                            /*
-                        productObj.remove("상품명");
-                        productObj.remove("상품정보");
-                        productObj.remove("카테고리");
-                        productObj.remove("이미지");
-                        productObj.remove("가격");
-                             */
                             productInfoArr.remove(i);
                             try {
                                 FileWriter file = new FileWriter(FILEPATH);

@@ -30,10 +30,10 @@ public class ChangeShippingList {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             if (br.readLine() == null) {
                 JSONObject productInfo = new JSONObject();
-                productInfo.put("받는사람", ShippingList.getShipAddNameTF());
-                productInfo.put("전화번호", ShippingList.getShipAddNumberTF());
-                productInfo.put("주소", ShippingList.getShipAddAddressTF());
-                productInfo.put("요청사항", ShippingList.getShipAddRequestTF());
+                productInfo.put("받는사람", ShippingListPage.getShipAddNameTF());
+                productInfo.put("전화번호", ShippingListPage.getShipAddNumberTF());
+                productInfo.put("주소", ShippingListPage.getShipAddAddressTF());
+                productInfo.put("요청사항", ShippingListPage.getShipAddRequestTF());
 
                 JSONArray productInfoArr = new JSONArray();
                 productInfoArr.add(productInfo);
@@ -55,10 +55,10 @@ public class ChangeShippingList {
                 JSONArray productInfoArr = (JSONArray) loadJsonObj.get("배송지정보");
 
                 JSONObject productInfo = new JSONObject();
-                productInfo.put("받는사람", ShippingList.getShipAddNameTF());
-                productInfo.put("전화번호", ShippingList.getShipAddNumberTF());
-                productInfo.put("주소", ShippingList.getShipAddAddressTF());
-                productInfo.put("요청사항", ShippingList.getShipAddRequestTF());
+                productInfo.put("받는사람", ShippingListPage.getShipAddNameTF());
+                productInfo.put("전화번호", ShippingListPage.getShipAddNumberTF());
+                productInfo.put("주소", ShippingListPage.getShipAddAddressTF());
+                productInfo.put("요청사항", ShippingListPage.getShipAddRequestTF());
 
                 productInfoArr.add(productInfo);
 
@@ -91,7 +91,7 @@ public class ChangeShippingList {
             for (int i = 0; i < shippingListArr.size(); i++) {
                 JSONObject shippingList = (JSONObject) shippingListArr.get(i);
                 String test = (String) shippingList.get("받는사람");
-                String compare = ShippingList.getTableName();
+                String compare = ShippingListPage.getTableName();
                 if (test.equals(compare)) {
                     JSONObject productInfo = new JSONObject();
                     shippingListArr.remove(i);
@@ -116,10 +116,10 @@ public class ChangeShippingList {
     }
     
     public static void editShippingList() {
-        String changeName = ShippingList.getShipAddNameTF();
-        String changeNumber = ShippingList.getShipAddNumberTF();
-        String changeAddress = ShippingList.getShipAddAddressTF();
-        String changeRequest = ShippingList.getShipAddRequestTF();
+        String changeName = ShippingListPage.getShipAddNameTF();
+        String changeNumber = ShippingListPage.getShipAddNumberTF();
+        String changeAddress = ShippingListPage.getShipAddAddressTF();
+        String changeRequest = ShippingListPage.getShipAddRequestTF();
         
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -131,7 +131,7 @@ public class ChangeShippingList {
             for (int i = 0; i < shippingListArr.size(); i++) {
                 JSONObject shippingList = (JSONObject) shippingListArr.get(i);
                 String test = (String) shippingList.get("받는사람");
-                String compare = ShippingList.getTableName();
+                String compare = ShippingListPage.getTableName();
                 if (test.equals(compare)) {
                     JSONObject productInfo = new JSONObject();
                     shippingListArr.remove(i);

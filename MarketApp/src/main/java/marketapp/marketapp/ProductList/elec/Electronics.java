@@ -1,18 +1,18 @@
 package marketapp.marketapp.ProductList.Elec;
 
+import javax.swing.ImageIcon;
 import marketapp.marketapp.ProductList.Product;
 import marketapp.marketapp.ProductList.ProductList;
 import marketapp.marketapp.ProductList.Foods.FoodList;
 
-import javax.swing.*;
-
 public class Electronics extends ProductList {
+
     /**
-     * @param name  전달되는 상품명
+     * @param name 전달되는 상품명
      * @param price 전달되는 상품가격
-     * @param desc  전달되는 상품정보
+     * @param desc 전달되는 상품정보
      * @param image 전달되는 상품이미지 Path
-     * @param type  전달되는 상품 카테고리
+     * @param type 전달되는 상품 카테고리
      * @return 전자제품 카테고리 객체 생성
      */
     public Product addProductList(String name, String price, String desc, ImageIcon image, String type) {

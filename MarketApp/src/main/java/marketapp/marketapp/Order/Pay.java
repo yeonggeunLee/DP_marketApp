@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import marketapp.marketapp.Order.ShippingList;
 import marketapp.marketapp.ProductList.UserPageScreen;
 import marketapp.marketapp.Login.LoginPage;
 import marketapp.marketapp.Order.PayPattern.BalancePayment;
@@ -486,7 +485,7 @@ public class Pay extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ShippingList sList = new ShippingList();
+        ShippingListPage sList = new ShippingListPage();
         this.checkAddressInput = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
