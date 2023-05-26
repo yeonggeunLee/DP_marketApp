@@ -1,6 +1,5 @@
 package marketapp.marketapp.ProductList.etc;
 
-import marketapp.marketapp.ProductList.HomeSupply.*;
 import marketapp.marketapp.ProductList.Product;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -57,7 +56,6 @@ public class etcProductList extends Product {
                 productInfo.put("상품정보", productDesc);
                 productInfo.put("이미지", image);
                 productInfo.put("카테고리", productCategory);
-                
 
                 JSONArray productInfoArr = new JSONArray();
                 productInfoArr.add(productInfo);
@@ -99,8 +97,6 @@ public class etcProductList extends Product {
                     productInfo.put("카테고리", productCategory);
 
                     productInfoArr.add(productInfo);
-
-                    // 같은 이름의 상품이 존재하는 지 확인하고 없을 때만 생성하는 코드로 수정 필요
                     try {
                         FileWriter file = new FileWriter(FILEPATH);
                         file.write(loadJsonObj.toJSONString());
@@ -234,13 +230,6 @@ public class etcProductList extends Product {
                         JSONObject productObj = (JSONObject) productInfoArr.get(i);
                         String productInfo = (String) productObj.get("상품명");
                         if (productName.equals(productInfo)) {
-                            /*
-                        productObj.remove("상품명");
-                        productObj.remove("상품정보");
-                        productObj.remove("카테고리");
-                        productObj.remove("이미지");
-                        productObj.remove("가격");
-                             */
                             productInfoArr.remove(i);
                             try {
                                 FileWriter file = new FileWriter(FILEPATH);

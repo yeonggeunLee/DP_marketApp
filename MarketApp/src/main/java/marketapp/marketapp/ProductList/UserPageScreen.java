@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -49,8 +50,7 @@ public class UserPageScreen extends javax.swing.JFrame {
     public static String getPassidBal() {
         return passidBal;
     }
-    
-    
+
     public UserPageScreen() {
         initComponents();
         productList.addMouseListener(new TableMouse());
@@ -83,11 +83,7 @@ public class UserPageScreen extends javax.swing.JFrame {
                 contents[i][2] = jObj.get("상품정보");
                 contents[i][3] = jObj.get("가격");
 
-                this.pName = (String) jObj.get("상품명");
-                this.pPrice = (String) jObj.get("가격");
-                this.pDesc = (String) jObj.get("상품정보");
             }
-
             this.model = new DefaultTableModel(contents, header) {
                 //  Returning the Class of each column will allow different
                 //  renderers to be used based on Class
@@ -205,6 +201,7 @@ public class UserPageScreen extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cououpang");
 
         productList.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
         productList.setModel(Setting());
@@ -326,7 +323,7 @@ public class UserPageScreen extends javax.swing.JFrame {
                 JSONObject memList = (JSONObject) memberListArr.get(i);
                 String checkId = (String) memList.get("ID");
                 String currentId = LoginPage.getLoginedID();
-                
+
                 if (checkId.equals(currentId)) {
                     String balance = (String) memList.get("Balance");
                     this.currentBalanceAmount = balance;
@@ -391,6 +388,50 @@ public class UserPageScreen extends javax.swing.JFrame {
 
     private void searchButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtActionPerformed
         // TODO add your handling code here:
+        // 검색 시 현재 이미지가 글자로 나옴. 테이블 칸이 그대로 남아있음
+        String searchText = searchTF.getText().toString();
+        if (searchText.equals("")) {
+            productList.setModel(Setting());
+            productList.repaint();
+            productList.revalidate();
+            productList.setVisible(true);
+            JOptionPane.showMessageDialog(null, "검색할 상품명을 입력하세요.");
+        } else {
+            try {
+                JSONParser parser = new JSONParser();
+                Object obj = parser.parse(new FileReader(filePath));
+                JSONObject JsonObj = (JSONObject) obj;
+                JSONArray productInfoArr = (JSONArray) JsonObj.get("상품목록");
+
+                String[] header = {"상품 이미지", "상품명", "상품정보", "가격"};
+                contents = new Object[productInfoArr.size()][4];
+                for (int i = 0; i < productInfoArr.size(); i++) {
+                    JSONObject jObj = (JSONObject) productInfoArr.get(i);
+                    String pname = (String) jObj.get("상품명");
+                    if (pname.equals(searchText)) {
+                        this.tableImage = new ImageIcon((String) jObj.get("이미지"));
+                        Image needChangeImage = tableImage.getImage();
+                        Image changedImage = needChangeImage.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+                        ImageIcon changedImageIcon = new ImageIcon(changedImage);
+                        contents[i][0] = changedImageIcon;
+                        contents[i][1] = jObj.get("상품명");
+                        contents[i][2] = jObj.get("상품정보");
+                        contents[i][3] = jObj.get("가격");
+                        this.model = new DefaultTableModel(contents, header);
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            productList.setModel(model);
+            productList.repaint();
+            productList.revalidate();
+            productList.setVisible(true);
+        }
     }//GEN-LAST:event_searchButtActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -52,8 +52,7 @@ public class TableMouse implements MouseListener {
             this.price = (String) o[3];
 
             ProductDetailScreen detail = new ProductDetailScreen();
-            //detail.setVisible(true);
-        } // 더블클릭
+        }
 
     }
 

@@ -625,6 +625,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
         jLabel1.setText("Cououpang");
         jLabel1.setToolTipText("");
 
+        adminProductTable.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
         adminProductTable.setModel(Setting());
         adminProductTable.setRowSelectionAllowed(false);
         adminProductTable.getTableHeader().setReorderingAllowed(false);
@@ -761,7 +762,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
 
     private void addProductButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtActionPerformed
         // TODO add your handling code here:
-        //같은이름 상품있는지 확인 코드 패턴에 넣던지 추가하기
         String inputTest1 = imgInputTF.getText();
         String inputTest2 = nameInputTF.getText();
         String inputTest3 = detailInputTF.getText();
@@ -840,10 +840,6 @@ public class AdminPageScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_imgInputTFActionPerformed
 
     private void deleteButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtActionPerformed
-        // TODO add your handling code here:
-        //System.out.println("선택된 상품의 상품명 : " +getDeleteSelectProductName());
-        //System.out.println("선택된 상품의 카테고리 : " + getDeleteSelectProductCategory());
-
         String selectPName = getSelectedProductName();
         String selectPCategory = getSelectedProductCategory();
 

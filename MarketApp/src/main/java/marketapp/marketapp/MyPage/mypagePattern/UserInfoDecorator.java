@@ -1,6 +1,5 @@
 package marketapp.marketapp.MyPage.mypagePattern;
 
-import marketapp.marketapp.MyPage.MyPageScreen;
 import static marketapp.marketapp.MyPage.MyPageScreen.*;
 
 /**
@@ -22,5 +21,5 @@ public class UserInfoDecorator implements MyPage {
         userInfoPanel.repaint();
         userInfoPanel.revalidate();
     }
-    
+
 }

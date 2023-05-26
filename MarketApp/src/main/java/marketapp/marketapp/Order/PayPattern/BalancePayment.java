@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package marketapp.marketapp.Order.PayPattern;
 
 import java.io.FileNotFoundException;
@@ -22,12 +18,12 @@ import org.json.simple.parser.ParseException;
  * @author 이영근
  */
 public class BalancePayment implements PaymentStrategy {
+
     public String orderListFilePath = "src\\main\\java\\Data\\OrderList.json";
     String memberfilePath = "src\\main\\java\\Data\\join.json";
 
     @Override
     public void pay(String price) {
-        // 잔고 결제 코드 추가하기
         int calB1 = Integer.parseInt(currentPayBalanceTF.getText());
         int calB2 = Integer.parseInt(orderPriceTF.getText());
         String calFinal = price;

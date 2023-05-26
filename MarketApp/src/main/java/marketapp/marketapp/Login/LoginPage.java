@@ -79,7 +79,6 @@ public class LoginPage extends javax.swing.JFrame {
 
         idLabel.setText("아이디 : ");
 
-        idTF.setText("example@example.com");
         idTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         idTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
