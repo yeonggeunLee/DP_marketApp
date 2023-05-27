@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.ProductList;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.beans.PropertyChangeEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,14 +16,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 상품 상세페이지 UI 및 기능을 구현한 클래스.
  * @author 이영근
  */
 public class ProductDetailScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProductDetailScreen
-     */
     public static String pName;
     public static String pDesc;
     public static String pPrice;

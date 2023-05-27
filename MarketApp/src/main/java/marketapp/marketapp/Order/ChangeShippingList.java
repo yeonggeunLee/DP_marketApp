@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package marketapp.marketapp.Order;
 
 import java.io.BufferedReader;
@@ -16,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 배송지 정보를 추가, 삭제, 변경을 하기 위한 기능을 구현한 클래스
  * @author 이영근
  */
 public class ChangeShippingList {

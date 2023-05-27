@@ -31,7 +31,6 @@ public class etcProductList extends Product {
     }
 
     public etcProductList(String name, String price, String desc, ImageIcon image, String type, String crud) {
-        //super();
         productName = name;
         productPrice = price;
         productDesc = desc;

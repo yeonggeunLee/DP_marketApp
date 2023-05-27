@@ -12,5 +12,4 @@ public class BasicMyPage implements MyPage {
     public void display() {
         MyPageScreen mypage = new MyPageScreen();
     }
-
 }

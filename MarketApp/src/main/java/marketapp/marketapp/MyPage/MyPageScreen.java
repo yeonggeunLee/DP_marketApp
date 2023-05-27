@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 마이페이지 UI 및 기능을 구현하는 클래스
  * @author 이영근
  */
 public class MyPageScreen extends javax.swing.JFrame {

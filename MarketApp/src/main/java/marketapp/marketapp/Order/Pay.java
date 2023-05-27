@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.Order;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalTime;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
@@ -26,7 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 결제 페이지 UI 및 기능을 구현한 클래스.
  * @author 이영근
  */
 public class Pay extends javax.swing.JFrame {

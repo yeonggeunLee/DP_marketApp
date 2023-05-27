@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.ProductList;
 
 import java.awt.Image;
-import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,7 +25,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 관리자 페이지 UI 및 기능을 구현한 클래스
  * @author 이영근
  */
 public class AdminPageScreen extends javax.swing.JFrame {
@@ -803,7 +798,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
                     Product cProduct = clothesproductList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                     refreshProductList();
                     addProductFrame.dispose();
-                } else if (InputProductCategory.equals("기타")) {
+                } else if (InputProductCategory.equals("etc")) {
                     ProductList etcproductList = new etcProduct();
                     Product eProduct = etcproductList.addProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                     refreshProductList();
@@ -863,7 +858,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
             ProductList clothesproductList = new Clothes();
             Product cProduct = clothesproductList.deleteProductList(getSelectedProductName());
             refreshProductList();
-        } else if (getSelectedProductCategory().equals("기타")) {
+        } else if (getSelectedProductCategory().equals("etc")) {
             ProductList etcproductList = new etcProduct();
             Product eProduct = etcproductList.deleteProductList(getSelectedProductName());
             refreshProductList();
@@ -915,7 +910,7 @@ public class AdminPageScreen extends javax.swing.JFrame {
                 ProductList clothesproductList = new Clothes();
                 Product cProduct = clothesproductList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                 refreshProductList();
-            } else if (getSelectedProductCategory().equals("기타")) {
+            } else if (getSelectedProductCategory().equals("etc")) {
                 ProductList etcproductList = new etcProduct();
                 Product eProduct = etcproductList.editProductList(InputProductName, InputProductPrice, InputProductDesc, addInputImg, InputProductCategory);
                 refreshProductList();

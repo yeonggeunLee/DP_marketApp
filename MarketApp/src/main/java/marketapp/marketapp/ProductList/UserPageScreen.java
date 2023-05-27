@@ -1,21 +1,15 @@
 package marketapp.marketapp.ProductList;
 
-import java.awt.Dimension;
 import java.awt.Image;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import marketapp.marketapp.Login.LoginPage;
 import marketapp.marketapp.MyPage.MyPageScreen;
-import marketapp.marketapp.Order.Pay;
 import marketapp.marketapp.ShoppingCart.ShoppingBasket;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,7 +17,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 사용자 메인화면 UI 및 기능을 구현한 클래스.
  * @author 이영근
  */
 public class UserPageScreen extends javax.swing.JFrame {

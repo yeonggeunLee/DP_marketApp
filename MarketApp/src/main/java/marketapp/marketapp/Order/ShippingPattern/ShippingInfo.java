@@ -1,4 +1,4 @@
-package marketapp.marketapp.Order;
+package marketapp.marketapp.Order.ShippingPattern;
 
 public class ShippingInfo {
 
