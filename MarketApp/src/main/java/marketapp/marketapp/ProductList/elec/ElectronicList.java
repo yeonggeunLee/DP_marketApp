@@ -31,7 +31,6 @@ public class ElectronicList extends Product {
     }
 
     public ElectronicList(String name, String price, String desc, ImageIcon image, String type, String crud) {
-        //super();
         productName = name;
         productPrice = price;
         productDesc = desc;

@@ -1,32 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.ProductList;
 
-import java.awt.Dimension;
 import java.awt.Image;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import marketapp.marketapp.Login.LoginPage;
 import marketapp.marketapp.MyPage.MyPageScreen;
-import marketapp.marketapp.Order.Pay;
+import marketapp.marketapp.ShoppingCart.ShoppingBasket;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 사용자 메인화면 UI 및 기능을 구현한 클래스.
  * @author 이영근
  */
 public class UserPageScreen extends javax.swing.JFrame {
@@ -214,6 +205,11 @@ public class UserPageScreen extends javax.swing.JFrame {
 
         BasketButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         BasketButt.setText("장바구니");
+        BasketButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BasketButtActionPerformed(evt);
+            }
+        });
 
         MypageButt.setFont(new java.awt.Font("맑은 고딕", 1, 20)); // NOI18N
         MypageButt.setText("마이페이지");
@@ -433,6 +429,11 @@ public class UserPageScreen extends javax.swing.JFrame {
             productList.setVisible(true);
         }
     }//GEN-LAST:event_searchButtActionPerformed
+
+    private void BasketButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasketButtActionPerformed
+        // TODO add your handling code here:
+        ShoppingBasket sb = new ShoppingBasket();
+    }//GEN-LAST:event_BasketButtActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BasketButt;

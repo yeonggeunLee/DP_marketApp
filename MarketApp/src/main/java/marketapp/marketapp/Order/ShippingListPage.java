@@ -1,29 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.Order;
 
-import java.awt.Image;
-import java.awt.event.MouseEvent;
+import marketapp.marketapp.Order.ShippingPattern.ShippingInfo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import static marketapp.marketapp.ProductList.AdminPageScreen.tableImage;
-import marketapp.marketapp.Order.ChangeShippingList;
-import marketapp.marketapp.Order.ChangeShippingList;
-import marketapp.marketapp.Order.Pay;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 배송지를 선택하는 UI 및 기능을 구현한 클래스
  * @author 이영근
  */
 public class ShippingListPage extends javax.swing.JFrame {

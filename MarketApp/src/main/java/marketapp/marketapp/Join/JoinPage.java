@@ -4,14 +4,9 @@ package marketapp.marketapp.Join;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -22,13 +17,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
+ * 회원가입 UI 및 회원가입 기능을 구현하는 클래스.
  * @author 이영근
  */
 public class JoinPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JoinPage
-     */
     private boolean idConfirm = true;
     private boolean pw1Confirm = true;
     private boolean pw2Confirm = true;
@@ -391,9 +384,7 @@ public class JoinPage extends javax.swing.JFrame {
                 membershipProgress = true;
                 JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
                 this.setVisible(false);
-            }/* else if (idConfirm == false || pw1Confirm == false || pw2Confirm == false || (joinCheck2 == false) && (joinCheck1 == false)) {
-                JOptionPane.showMessageDialog(null, "입력정보를 다시 확인해주세요.");
-            }*/ else {
+            } else {
                 JOptionPane.showMessageDialog(null, "입력정보를 다시 확인해주세요.");
             }
         } catch (Exception ex) {
@@ -413,7 +404,6 @@ public class JoinPage extends javax.swing.JFrame {
     }//GEN-LAST:event_idTFActionPerformed
 
     private void idcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idcButtonActionPerformed
-        // TODO add your handling code here:
         Boolean idTest1 = false;        // 아이디 미입력 체크
         Boolean idTest2 = false;        // 아이디 입력 길이 체크
         Boolean idTest3 = false;        // 아이디 공백 정규식 체크

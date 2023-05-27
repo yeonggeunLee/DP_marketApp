@@ -1,0 +1,23 @@
+{
+    "쇼핑카트": [{
+            "Details": "",
+            "Price": "",
+            "Product": "",
+            "Count": ""
+        }, {
+            "Details": "짱구가 모델인 한정판 마스크",
+            "Price": "15000",
+            "Product": "짱구 마스크",
+            "Count": "1"
+        }, {
+            "Details": "짱구가 모델인 한정판 마스크",
+            "Price": "15000",
+            "Product": "짱구 마스크",
+            "Count": "1"
+        }, {
+            "Details": "2023년에 새로 출시된 갤럭시 S23",
+            "Price": "1000000",
+            "Product": "갤럭시 S23",
+            "Count": "1"
+        }]
+}

@@ -31,7 +31,6 @@ public class HomeSuppliesList extends Product {
     }
 
     public HomeSuppliesList(String name, String price, String desc, ImageIcon image, String type, String crud) {
-        //super();
         productName = name;
         productPrice = price;
         productDesc = desc;
@@ -98,7 +97,6 @@ public class HomeSuppliesList extends Product {
 
                     productInfoArr.add(productInfo);
 
-                    // 같은 이름의 상품이 존재하는 지 확인하고 없을 때만 생성하는 코드로 수정 필요
                     try {
                         FileWriter file = new FileWriter(FILEPATH);
                         file.write(loadJsonObj.toJSONString());

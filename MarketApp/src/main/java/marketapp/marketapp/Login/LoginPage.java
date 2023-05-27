@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package marketapp.marketapp.Login;
 
 import marketapp.marketapp.ProductList.UserPageScreen;
@@ -19,14 +15,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * 로그인 UI 및 로그인 기능을 구현하는 클래스
  * @author 이영근
  */
 public class LoginPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginPage
-     */
     /**
      * isAdmin 관리자 아이디인지 체크하는 변수
      */
@@ -280,7 +273,8 @@ public class LoginPage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     *
+     * 가입된 회원목록을 파싱하여 현재 로그인을 진행하려는 아이디, 비밀번호와 같은게 있는지 체크
+     * 관리자 여부도 확인
      * @param id - 아이디 textfiled 값
      * @param password - 비밀번호 textfiled 값
      * @return - 회원인지 아닌지 판단여부 (True : 회원, false : 회원 목록에 없음)

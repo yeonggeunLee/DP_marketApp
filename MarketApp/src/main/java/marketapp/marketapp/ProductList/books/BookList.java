@@ -31,7 +31,6 @@ public class BookList extends Product {
     }
 
     public BookList(String name, String price, String desc, ImageIcon image, String type, String crud) {
-        //super();
         productName = name;
         productPrice = price;
         productDesc = desc;
