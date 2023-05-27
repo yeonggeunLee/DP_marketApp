@@ -4,21 +4,15 @@
             "Phone": "01011112222",
             "ID": "testmember",
             "Balance": "1000000",
-            "Password": "",
+            "Password": "test1234!",
             "Name": "테스트고객"
         }, {
             "Type": "관리자",
             "Phone": "01022221111",
             "ID": "testadmin",
             "Balance": "250000",
-            "Password": "",
+            "Password": "test1234!",
             "Name": "테스트관리자"
-        }, {
-            "Type": "고객",
-            "Phone": "",
-            "ID": "",
-            "Balance": "0",
-            "Password": "",
-            "Name": ""
-        }]
+        }
+    ]
 }

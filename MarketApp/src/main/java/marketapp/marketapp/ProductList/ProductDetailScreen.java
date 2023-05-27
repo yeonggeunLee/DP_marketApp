@@ -7,8 +7,18 @@ package marketapp.marketapp.ProductList;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import marketapp.marketapp.Order.Pay;
+import org.json.simple.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -222,6 +232,41 @@ public class ProductDetailScreen extends javax.swing.JFrame {
 
     private void basketButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basketButtActionPerformed
         // TODO add your handling code here:
+        String pName = nameLabel.getText().toString();
+        String pPrice = priceLabel.getText().toString();
+        String pDesc = descLabel.getText().toString();
+        String pAmount = productAmountTF.getText().toString();
+        String cartfilePath = "src\\main\\java\\Data\\cartData.json";
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader(cartfilePath));
+            JSONObject JsonObj = (JSONObject) obj;
+            JSONArray productInfoArr = (JSONArray) JsonObj.get("쇼핑카트");
+
+            JSONObject jObj = new JSONObject();
+            jObj.put("Product", pName);
+            jObj.put("Price", pPrice);
+            jObj.put("Details", pDesc);
+            jObj.put("Count", pAmount);
+
+            productInfoArr.add(jObj);
+            try {
+                FileWriter file = new FileWriter(cartfilePath);
+                file.write(JsonObj.toJSONString());
+                file.flush();
+            } catch (IOException ae) {
+                ae.printStackTrace();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ProductDetailScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ProductDetailScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ProductDetailScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(null, "장바구니에 상품이 담겼습니다.");
+        dispose();
     }//GEN-LAST:event_basketButtActionPerformed
 
     private void buyButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtActionPerformed
